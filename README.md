@@ -1,8 +1,8 @@
-# MedicalCorp.
+# MedicalCorp
 University project with databases
 
-### Список участников:
-* Атлашкин Виктор - архитектор, менеджер проекта
-* Жигулина Дарья - дизайнер/графический интерфейс
-* Ряснянская Дарья -разработчик
-* Ткачук Владислав - тестеровшик, документация
+###List :
+* Viktor Atlashkin - architect, project manager
+* Darya zhigulina - designer/graphical interface
+* Darya ryasnyanskaya - developer
+* Vladislav Tkachuk - tester, documentation
