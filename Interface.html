@@ -1,0 +1,1077 @@
+﻿<html class="translated-ltr"><head>
+		<title>quickMockup</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<script src="scripts/jquery.js"></script>
+		<script src="scripts/jquery-ui.js"></script>
+		<script src="scripts/showdown.js"></script>
+		<script src="scripts/showdownUIExtensions.js"></script>
+		<script src="scripts/mousetrap.js"></script>
+		<script src="scripts/filereader.js"></script>
+		<script src="scripts/FileSaver.js"></script>
+
+		<script src="scripts/jqUiEditMD2HTML.js"></script>
+
+		<link href="styles/jquery-ui.css" rel="stylesheet">
+
+
+		<style>
+			#toolbar, #widgetCollectionWrap{display:none;}
+
+			body, div{
+			padding:0;
+			margin:0;
+			}
+
+			#canvas .custom-selected.ui-resizable>.ui-resizable-handle{
+				pointer-events: auto;
+				background: rgba(0,0,0,0); /*the following stylesheet shows these again. If only html is saved (and the mockup not interactive thus, they are hidden)*/
+			}
+
+			#canvasWrap{
+				background-color: gray;
+			}
+
+			#canvas{
+				background-color: white;
+			}
+
+
+
+		</style>
+		<link href="styles/quickMockupInteractive.css" rel="stylesheet">
+
+		<!--elements -->
+		<!-- style has an ID so we can retrieve it for exporting html and css via a script reading the innerHTML of the style -->
+		<style id="elementStyles">
+			/*all*/
+			.newMockElement, .mockElement{
+				box-sizing: border-box;
+				font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+				position: relative;
+				background:rgba(255,255,255,0.8);
+				width:10em;
+			}
+			.newMockElement > div.editableArea, .mockElement > div.editableArea{
+				width: 100%;
+				box-sizing: border-box;
+			}
+
+			.newMockElement a, .mockElement a{
+				color: #0093ff;
+				pointer-events: none; /*otherwise, links in elements, markdown etc. can be clicked and lead away from the app.*/
+			}
+			.newMockElement a, .mockElement a:visited{
+				color: #0093ff /*no visted state for mockup links*/
+			}
+
+
+			.editableArea>p{
+				margin: 0 0 0 0;
+				padding: 0 0 0 0;
+			}
+
+			/*buttons*/
+			.newMockElement.button, .mockElement.button{
+				justify-content: center;
+				align-items: center;
+				display: flex;
+				border:2px solid #333;
+				border-radius:3px;
+				background:white;
+				width: 8em;
+				width: 8em;
+				height:3em;
+				box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+			}
+
+			/*Window*/
+			.newMockElement.dialogWindow, .mockElement.dialogWindow{
+				border:2px solid gray;
+				border-radius:3px;
+				width: 400px;
+				height:200px;
+			}
+
+			.newMockElement.dialogWindow > .dialogWindow-bar, .mockElement.dialogWindow > .dialogWindow-bar{
+				background-color:silver;
+				border-bottom: 2px solid #333;
+				border-radius: 3px;
+				padding:7px;
+				height:1.6em;
+			}
+
+			.newMockElement.dialogWindow > div > .dialogWindow-closeButton, .mockElement.dialogWindow > div > .dialogWindow-closeButton{
+				padding:4px;
+				font-size:1.5em;
+				margin-top: -0.4em;
+				float:right;
+			}
+
+			/*tabs*/
+			.newMockElement.tabs, .mockElement.tabs{
+				background: rgba(0,0,0,0);
+				width:30em;
+				border-bottom:1px solid rgba(0,0,0,0.3);
+			}
+
+			.newMockElement.tabs>.editableArea, .mockElement.tabs>.editableArea{
+				border-bottom: 2px solid gray;
+				background: rgba(0,0,0,0);
+				box-sizing: border-box;
+				width:100%;
+				margin:0;
+			}
+
+			.newMockElement.tabs>.editableArea a, .mockElement.tabs>.editableArea a{
+				pointer-events: none; /*prevent accidental navigation*/
+			}
+
+			.newMockElement.tabs>.editableArea>ul, .mockElement.tabs>.editableArea>ul{
+				box-sizing: border-box;
+				width:100%;
+				margin:0;
+				padding:0;
+			}
+
+			.newMockElement.tabs>.editableArea>ul>li, .mockElement.tabs> .editableArea>ul>li{
+				display: inline-block;
+				padding: 5px 16px;
+				border: 1px solid gray;
+				border-top-left-radius: 3px;
+				border-top-right-radius: 3px;
+				margin: 0 0 -2px 0.3em;
+				font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+				background:white;
+			}
+
+			.mockElement.tabs>.editableArea>ul>li.item-highlighted, .newMockElement.tabs>.editableArea>ul>li.item-highlighted{
+				background: #DDD;
+			}
+
+			.newMockElement.label .mockElement.label{
+				width:7em;
+				background-color: transparent;
+			}
+
+			.newMockElement.link, .mockElement.link{
+				width:7em;
+				color:#0093ff;
+				text-decoration: underline;
+			}
+
+			/*headline*/
+			.newMockElement.headline>h1, .mockElement.headline>h1{
+				margin:0;
+				background-color: transparent;
+			}
+			/*paragraph*/
+			.newMockElement.paragraph>p{
+				margin:0;
+			}
+
+			/*table*/
+			.newMockElement.table, .mockElement.table{
+				width:10em;
+			}
+			.newMockElement.table table, .mockElement.table table{
+				width: 100%;
+				border-collapse: collapse;
+			}
+			.newMockElement.table table td, .mockElement.table table td, .newMockElement.table table th, .mockElement.table table th{
+				border: 1px solid gray;
+			}
+
+			.newMockElement.table table th, .mockElement.table table th{
+				border-bottom: 2px solid black;
+			}
+
+			/*just a rectangle*/
+			.newMockElement.rect , .mockElement.rect{
+				border:2px solid #333;
+				width:200px;
+				height:50px;
+				background-color: transparent;
+			}
+
+			.newMockElement.grayrect , .mockElement.grayrect{
+				border:2px solid #333;
+				width:200px;
+				height:50px;
+				background-color: rgba(0,0,0,0.2);
+			}
+
+
+			/*optionlist*/
+
+			.newMockElement.optionRadiobutton , .mockElement.optionRadiobutton{
+				box-sizing: border-box;
+				background-color: transparent;
+			}
+
+			.newMockElement.optionRadiobutton .editableArea li, .mockElement.optionRadiobutton .editableArea li{
+				display: block;
+			}
+
+			.newMockElement.optionRadiobutton ul, .mockElement.optionRadiobutton ul{
+				margin:0;
+				padding: 0;
+			}
+
+			.newMockElement.optionRadiobutton .editableArea li::before, .mockElement.optionRadiobutton .editableArea li::before{
+				/*implements a simulated radio button, since uiconde circles and the "fisheye" character were inconsisted in size*/
+				content: " ";
+				display: inline-block;
+				background: white;
+				width: 0.8em;
+				height: 0.8em;
+				position: relative;
+				top: 0.1em;
+				margin: 0 0.3em 0 0;
+				padding: 0;
+				border-radius: 10em;
+				border: 2px inset gray;
+				box-sizing: border-box;
+			}
+
+			.newMockElement.optionRadiobutton .editableArea li.item-highlighted::before, .mockElement.optionRadiobutton .editableArea li.item-highlighted::before{
+				content: "";
+				background: black;
+				background-clip: content-box;
+				padding: 0.1em;
+			}
+
+			/*Checkboxes*/
+			.newMockElement.optionCheckbox , .mockElement.optionCheckbox{
+				box-sizing: border-box;
+				background-color: transparent;
+			}
+
+			.newMockElement.optionCheckbox .editableArea li, .mockElement.optionCheckbox .editableArea li{
+				display: block;
+			}
+
+			.newMockElement.optionCheckbox ul, .mockElement.optionCheckbox ul{
+				margin:0;
+				padding: 0;
+			}
+
+
+			.newMockElement.optionCheckbox .editableArea li::before, .mockElement.optionCheckbox .editableArea li::before{
+				content:"☐ "
+			}
+
+			.newMockElement.optionCheckbox .editableArea li.item-highlighted::before, .mockElement.optionCheckbox .editableArea li.item-highlighted::before{
+				content:"☑ ";
+			}
+
+			/*Dropdown*/
+			.dropdownList{
+				border:2px solid gray;
+				border-radius: 3px;
+				padding: 0px 0 0px 0.4em;
+				display: table;
+				background-color: white;
+			}
+
+			.dropdownList .editableArea{
+				display: table-cell;
+				text-align: center;
+				height: 100%;
+				vertical-align: middle;
+			}
+
+			.dropdownList .mockelement-dropdown-arrow{
+				border-left: 1px solid rgb(128, 128, 128);
+				padding: 0px 0.4em;
+				display: table-cell;
+				text-align: center;
+				height: 100%;
+				vertical-align: middle;
+				background: #EEE;
+
+
+			}
+			/*input Box*/
+			.newMockElement.inputbox, .mockElement.inputbox{
+			border:2px solid darkgray;
+			align-items: center;
+			display: flex;
+			border:2px solid #333;
+			padding-left:0.4em;
+			}
+
+			/*spinner*/
+			.newMockElement.spinner, .mockElement.spinner{
+			border:2px solid darkgray;
+			justify-content: center;
+			align-items: center;
+			display: flex;
+			border:2px solid #333;
+			background-color: white;
+			}
+
+			.newMockElement.spinner::before, .mockElement.spinner::before{
+				content: "▴";
+				position: absolute;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				right: 0;
+				top: 0;
+				width: 1.5em;
+				height: 50%;
+				background: lightgray;
+				font-size: 0.7em;
+			}
+
+			.newMockElement.spinner::after, .mockElement.spinner::after{
+				content:"▾";
+				position: absolute;
+				display: flex;
+				justify-content: center;
+	align-items: center;
+				right: 0px;
+				bottom: 0px;
+				width: 1.5em;
+				height: 50%;
+				background: lightgray ;
+				font-size: 0.7em;
+				box-sizing: border-box;
+				padding-bottom: 0.2em;
+				border-top: 1px solid gray;
+			}
+
+
+			/*slider*/
+			.newMockElement.slider,
+			.mockElement.slider{
+				align-items: center;
+				display:flex;
+			}
+
+			.newMockElement.slider:before,
+			.mockElement.slider::before{
+				content:" ";
+				height:0.5em;
+				width:0.5em;
+				background: white;
+				border: 3px solid #333;
+				border-radius: 10em;
+				position: relative;
+				left:3em;
+			}
+
+			.newMockElement.slider:after,
+			.mockElement.slider::after{
+				content:" ";
+				height: 2px;
+				background: #222;
+				width:100%;
+			}
+			/*loading indicator*/
+			.newMockElement.loadingIndicator,
+			.mockElement.loadingIndicator{
+				border: 1px solid gray;
+				border-radius: 2px;
+				background-color: white;
+				padding: 0;
+				justify-content: center;
+				align-items: center;
+				display: flex;
+				position: relative
+			}
+
+			.newMockElement.loadingIndicator .bar,
+			.mockElement.loadingIndicator .bar{
+				 margin: 0;
+					background-color: rgba(0, 0, 0, 0.21);
+				width: 70%;
+				display: block;
+				position: absolute;
+				height: 100%;
+				top: 0;
+				left: 0;
+				text-align: center;
+			}
+
+			/*entries vertical*/
+			.newMockElement.entries-horizontal, .mockElement.entries-horizontal{
+				background: rgba(0,0,0,0);
+				width:15em;
+			}
+
+			.newMockElement.entries-horizontal .editableArea, .mockElement.entries-horizontal .editableArea{
+				background: rgba(0,0,0,0);
+				box-sizing: border-box;
+				width:100%;
+				height: 100%;
+				margin:0;
+			}
+
+			.newMockElement.entries-horizontal .editableArea ul, .mockElement.entries-horizontal .editableArea ul{
+				box-sizing: border-box;
+				width:100%;
+				height: 100%;
+				margin:0;
+				padding:0;
+				display: table;
+				border-collapse: collapse;
+			}
+
+			.newMockElement.entries-horizontal ul li, .mockElement.entries-horizontal ul li{
+				display: table-cell;
+				padding: 0.2em;
+				border: 1px solid gray;
+				border-collapse: collapse;
+				margin: 0;
+				font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+				text-align: center;
+				vertical-align: middle;
+			}
+
+			.mockElement.entries-horizontal ul li.item-highlighted{
+				background: #DDD;
+			}
+
+			/*entries horizontal*/
+			.newMockElement.entries-vertical, .mockElement.entries-vertical{
+				background: rgba(0,0,0,0);
+				width:30em;
+			}
+
+			.newMockElement.entries-vertical .editableArea, .mockElement.entries-vertical .editableArea{
+				background: rgba(0,0,0,0);
+				box-sizing: border-box;
+				width:100%;
+				height: 100%;
+				margin:0;
+			}
+
+			.newMockElement.entries-vertical .editableArea ul, .mockElement.entries-vertical .editableArea ul{
+				box-sizing: border-box;
+				width: 100%;
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.newMockElement.entries-vertical ul li, .mockElement.entries-vertical ul li{
+				margin: 0px;
+				font-family: "Comic Sans MS","Comic Sans",cursive;
+				width: 150px;
+				padding: 0.2em;
+				flex: 1 1 100%;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: center;
+				border: 1px solid rgb(128, 128, 128);
+				border-collapse: collapse;
+				margin-top: -1px;
+			}
+
+			.mockElement.entries-vertical ul li.item-highlighted{
+				background: #DDD;
+			}
+
+
+			/*boxes vertical*/
+			.newMockElement.boxes-horizontal, .mockElement.boxes-horizontal{
+				background: rgba(0,0,0,0);
+				width:15em;
+			}
+
+			.newMockElement.boxes-horizontal .editableArea, .mockElement.boxes-horizontal .editableArea{
+				background: rgba(0,0,0,0);
+				box-sizing: border-box;
+				width:100%;
+				height: 100%;
+				margin:0;
+			}
+
+			.newMockElement.boxes-horizontal .editableArea ul, .mockElement.boxes-horizontal .editableArea ul{
+				box-sizing: border-box;
+				width: 100%;
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+				display: flex;
+				flex-direction: row;
+			}
+
+			.newMockElement.boxes-horizontal ul li, .mockElement.boxes-horizontal ul li{
+				padding: 0.2em;
+				border: 1px solid rgb(128, 128, 128);
+				font-family: "Comic Sans MS","Comic Sans",cursive;
+				margin: 0.2em;
+				display: flex;
+				flex: 1 1 auto;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.mockElement.boxes-horizontal ul li.item-highlighted{
+				background: #DDD;
+			}
+
+			/*boxes vertical*/
+			.newMockElement.boxes-vertical, .mockElement.boxes-vertical{
+				background: rgba(0,0,0,0);
+				width:10em;
+			}
+
+			.newMockElement.boxes-vertical .editableArea, .mockElement.boxes-vertical .editableArea{
+				background: rgba(0,0,0,0);
+				box-sizing: border-box;
+				width:100%;
+				height: 100%;
+				margin:0;
+			}
+
+			.newMockElement.boxes-vertical .editableArea ul, .mockElement.boxes-vertical .editableArea ul{
+				box-sizing: border-box;
+				width: 100%;
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.newMockElement.boxes-vertical ul li, .mockElement.boxes-vertical ul li{
+				margin: 1.5% 0 0 0;
+				font-family: "Comic Sans MS","Comic Sans",cursive;
+				width: 99%;
+				padding: 0.2em;
+				flex: 1 1 100%;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: center;
+				border: 1px solid rgb(128, 128, 128);
+				border-collapse: collapse;
+			}
+
+			.mockElement.boxes-vertical ul li.item-highlighted{
+				background: #DDD;
+			}
+
+			/*iconbar*/
+
+
+			.newMockElement.boxes-iconbar-horizontal ul>li, .mockElement.boxes-iconbar-horizontal ul>li{
+				border: 2px solid rgb(128, 128, 128);
+				display: flex;
+				justify-content: center;
+				font-size: 1.7em;
+				align-items: center;
+				border-radius: 3px;
+				color: rgb(51, 51, 51);
+				flex: 1 1 0%;
+				margin: 0.1em;
+				padding: 0.1em 0.1em 0.2em;
+			}
+			.newMockElement.boxes-iconbar-horizontal ul>li{
+			min-width: 1em;
+			}
+
+		/*image placeholder*/
+		.newMockElement.imageplaceholder, .mockElement.imageplaceholder{
+			color:darkgray;
+			background-color: lightgray;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			height:5em;
+		}
+
+		/*meta: note*/
+		.newMockElement.note, .mockElement.note{
+		background: #f7ee9e;
+		background: linear-gradient(to bottom, #f7ee9e 0%,#e0d68f 99%);
+		border: 0px none;
+		box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.4);
+		transform: rotate(-3deg);
+		width:150px;
+		height:150px;
+		}
+
+		.newMockElement.note > *, .mockElement.note > *{
+			transform: rotate(3deg); /*so the text is not rotated*/
+		}
+
+		.newMockElement.note .editableArea, .mockElement.note .editableArea{
+			padding:0.5em;
+		}
+
+		/*Meta: arrow note*/
+		.newMockElement.arrownote, .mockElement.arrownote{
+		background: #f7ee9e;
+		border: 0px none;
+		box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.4);
+		width:150px;
+		height:30px;
+		}
+
+		.newMockElement.arrownote .editableArea, .mockElement.arrownote .editableArea{
+			padding:0.2em;
+		}
+
+		.newMockElement.arrownote::before, .mockElement.arrownote::before{
+			width: 0;
+		height: 0;
+		margin-left:-15px;
+		margin-top:0px;
+		border-style: solid;
+		border-width: 15px 15px 15px 0;
+		border-color: transparent #eae193 transparent transparent;
+	content:"";
+	position:absolute
+		}
+
+		.newMockElement.note .editableArea, .mockElement.note .editableArea{
+			padding:0.5em;
+		}
+	</style>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+
+<body style="cursor: auto;">
+<div id="appContainer">
+<div id="widgetCollectionWrap" class="ui-resizable" style="width: 532px;">
+	<ul id="widgetCollection">
+		<!--
+
+				Tentative Description for creating elements:
+
+					In each list Element goes a div. This Div is the Interface Element which can be dragged to the canvas.
+					Each element has the class "newMockElement". This is changed to "mockElement" when it is added to the cavas.
+					Also each element can have other classes.
+
+					In the Div there can be other nested elements.
+
+					One of these elements *can* hold text that can be edited.  This is done by adding the attribute "data-editablearea" to this element.
+
+					The way the text is edited can be customized, by adding the attribute data-editable-mode= to it. The attribute can have the following values: "markdown", "uielements", "plain". If you set nothing, markdown is assumed.
+
+					markdown: Is markdown with a table extension and the possibility to create radiobuttons via "(x)" and checkboxes via [x]
+					uielements: for creating lists where the items are seperated by a ";". List items can highlighted (item-highlighted class is added to the <li> element) by adding a "*" in front: "normal; normal; *I am Active; normal item again; …"
+					plain: plain text
+
+					DO: give your element an additional (aside the newMockupElement) class: "newMockupElement fooBarClass".
+
+					DO: Use ">" (direct child) instead of the " " (descendant operator); If elements are nested it can have strange side effects since the nested element will have styles that it did not have before.
+
+					DONT:
+					* give the element an id. The id is set by the script.
+
+				-->
+
+				<li title="кнопка">
+					<div class="newMockElement button ui-draggable ui-draggable-handle" data-editable-content="OK" data-editable-mode="plain">
+						<span class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ok</font></font></span>
+					</div>
+				</li>
+				<li title="вкладки"><!-- Tabs -->
+					<div class="newMockElement tabs ui-draggable ui-draggable-handle" data-editable-content="Tab1;*Tab2; Tab3" data-editable-mode="uielements">
+						<div class="editableArea">
+							<ul>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tab1</font></font></li>
+								<li class="item-highlighted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Таб2</font></font></li>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tAB3</font></font></li>
+							</ul>
+
+						</div>
+					</div>
+				</li>
+				<li title="Короткая текстовая метка">
+					<div class="newMockElement label ui-draggable ui-draggable-handle" data-editable-content="label" data-editable-mode="plain">
+						<div class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">метка</font></font></div>
+					</div>
+				</li>
+				<li title="ссылка">
+					<div class="newMockElement link ui-draggable ui-draggable-handle" data-editable-content="link" data-editable-mode="plain">
+						<div class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ссылка на сайт</font></font></div>
+					</div>
+				</li>
+				<li title="список флажков">
+					<div class="newMockElement optionCheckbox ui-draggable ui-draggable-handle" data-editable-content="option; *other option" data-editable-mode="uielements">
+						<div class="editableArea">
+							<ul>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">вариант</font></font></li>
+								<li class="item-highlighted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">другой вариант</font></font></li>
+							</ul>
+
+						</div>
+					</div>
+				</li>
+				<li title="список радиокнопок">
+					<div class="newMockElement optionRadiobutton ui-draggable ui-draggable-handle" data-editable-content="option; *other option" data-editable-mode="uielements">
+						<div class="editableArea">
+							<ul>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">вариант</font></font></li>
+								<li class="item-highlighted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">другой вариант</font></font></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li title="выпадающий элемент">
+					<div class="newMockElement dropdownList ui-draggable ui-draggable-handle" data-editable-content="DropdownTitle" data-editable-mode="plain">
+						<span class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Название </font></font></span><font style="vertical-align: inherit;"><span class="mockelement-dropdown-arrow"><font style="vertical-align: inherit;">выпадающего </font></span><span class="editableArea"><font style="vertical-align: inherit;">меню </font></span></font><span class="mockelement-dropdown-arrow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">▾</font></font></span>
+					</div>
+				</li>
+				<li title="элемент вращения">
+					<div class="newMockElement spinner ui-draggable ui-draggable-handle" data-editable-content="10" data-editable-mode="plain">
+						<span class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10</font></font></span>
+					</div>
+				</li>
+				<li title="скользящий элемент">
+					<div class="newMockElement slider ui-draggable ui-draggable-handle">
+						<span> </span>
+					</div>
+				</li>
+				<li>
+					<div class="newMockElement loadingIndicator ui-draggable ui-draggable-handle">
+						<div class="bar"></div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+						70%
+					</font></font></div>
+				</li>
+				<li>
+					<div class="newMockElement headline ui-draggable ui-draggable-handle" data-editable-content="headline1" data-editable-mode="plain">
+						<h1 class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Headline1</font></font></h1>
+					</div>
+				</li>
+				<li title="Редактируемый абзац">
+					<div class="newMockElement paragraph ui-draggable ui-draggable-handle" data-editable-content="
+Paragraph
+(Markdown **Supported** !)">
+						<div class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+							Абзац (уценка </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">поддерживается</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> !)
+						</font></font></div>
+					</div>
+				</li>
+				<li title="таблица уценок">
+					<div class="newMockElement table ui-draggable ui-draggable-handle" data-editable-content="
+| h1    | h2      |      h3 |
+|:------|:-------:|--------:|
+| lorem | ipsum   | dolor   |
+| first | second  | third   |
+					">
+						<div class="editableArea">
+							<table>
+							<thead>
+							<tr>
+							<th style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">h1</font></font></th>
+							<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">h2</font></font></th>
+							<th style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">h3</font></font></th>
+							</tr>
+							</thead>
+
+							<tbody>
+							<tr>
+							<td style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorem</font></font></td>
+							<td style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ipsum</font></font></td>
+							<td style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">боль</font></font></td>
+							</tr>
+
+							<tr>
+							<td style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">первый</font></font></td>
+							<td style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">второй</font></font></td>
+							<td style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">третий</font></font></td>
+							</tr>
+
+							</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li title="простое окно ОС"><!-- Dialog Window -->
+					<div class="newMockElement dialogWindow ui-draggable ui-draggable-handle" data-editable-content="myWindow" data-editable-mode="plain">
+						<div class="dialogWindow-bar">
+							<span class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Тител </font></font></span>
+							<span class="dialogWindow-closeButton"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></span>
+						</div>
+					</div>
+				</li>
+				<li title="Прямоугольник">
+					<div class="newMockElement rect ui-draggable ui-draggable-handle">
+					</div>
+				</li>
+				<li title="серый прямоугольник">
+					<div class="newMockElement grayrect ui-draggable ui-draggable-handle">
+					</div>
+				</li>
+				<li title="горизонтальный список">
+					<div class="newMockElement entries-horizontal ui-draggable ui-draggable-handle" data-editable-content="Entry1;Entry2;*Entry3" data-editable-mode="uielements">
+						<div class="editableArea">
+							<ul>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entry1</font></font></li>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entry2</font></font></li>
+								<li class="item-highlighted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entry3</font></font></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li title="вертикальный список">
+					<div class="newMockElement entries-vertical ui-draggable ui-draggable-handle" data-editable-content="Entry1;Entry2;*Entry3" data-editable-mode="uielements">
+						<div class="editableArea">
+							<ul>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entry1</font></font></li>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entry2</font></font></li>
+								<li class="item-highlighted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entry3</font></font></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li title="список горизонтальных блоков (например, для панелей инструментов)">
+					<div class="newMockElement boxes-horizontal ui-draggable ui-draggable-handle" data-editable-content="Entry1;Entry2;*Entry3" data-editable-mode="uielements">
+						<div class="editableArea">
+							<ul>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entry1</font></font></li>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entry2</font></font></li>
+								<li class="item-highlighted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entry3</font></font></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li title="список вертикальных блоков (например, для панелей инструментов)">
+					<div class="newMockElement boxes-vertical ui-draggable ui-draggable-handle" data-editable-content="Entry1;Entry2;*Entry3" data-editable-mode="uielements">
+						<div class="editableArea">
+							<ul>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entry1</font></font></li>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">entry2</font></font></li>
+								<li class="item-highlighted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entry3</font></font></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li title="горизонтальные ящики для панелей инструментов">
+					<div class="newMockElement boxes-horizontal boxes-iconbar-horizontal ui-draggable ui-draggable-handle" data-editable-content="☰;⌂;⚑; ⚙; ✂;✐;✔;✘;↶;↷;◂;▸; ▴;▾" data-editable-mode="uielements">
+						<div class="editableArea">
+							<ul>
+								<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">☰</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">⌂</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">⚑</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ⚙</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ✂</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">✐</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">✔</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">✘</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">↶</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">↷</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">◂</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">▸</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ▴</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">▾</font></font></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+
+				<li title="заполнитель изображения">
+					<div class="newMockElement imageplaceholder ui-draggable ui-draggable-handle" data-editable-content="Image" data-editable-mode="plain">
+						<div class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+						Образ
+						</font></font></div>
+					</div>
+				</li>
+
+				<li title="Редактируемая заметка">
+					<div class="newMockElement meta-element note ui-draggable ui-draggable-handle" data-editable-content="Notes here!" data-editable-mode="markdown">
+						<div class="editableArea">
+						</div>
+					</div>
+				</li>
+
+				<li title="редактируемый стикер">
+					<div class="newMockElement meta-element arrownote ui-draggable ui-draggable-handle" data-editable-content="Notes here!" data-editable-mode="plain">
+						<div class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+						нота!
+						</font></font></div>
+					</div>
+				</li>
+		</ul>
+	<div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div></div>
+
+
+		<div id="canvasWrap">
+			<div style="height: 2000px; width: 2000px;" class="ui-droppable" id="canvas">
+				<!-- this is example content-->
+
+
+
+<!-- example content end -->
+
+		
+
+
+			<div id="mockElement_26761610563949" style="position: absolute; top: 162px; left: 233px; z-index: auto; width: 744px; right: auto; height: 429px; bottom: auto;" class="rect ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable">
+					<div class="headline ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="Sign in" data-editable-mode="plain" id="mockElement_92269782419316" style="position: absolute; top: 19px; left: 33px; width: 650px;">
+						<h1 class="editableArea" id="editableArea_92269782419316"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">войти в систему</font></font></h1>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div><div class="button ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="OK" data-editable-mode="plain" id="mockElement_22916366353394" style="position: absolute; top: 314px; left: 293px; z-index: auto; width: 128px; right: auto; height: 48px; bottom: auto;">
+						<span class="editableArea" id="editableArea_22916366353394"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ok</font></font></span>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="grayrect ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" id="mockElement_15786007450880" style="position: absolute; top: 21px; left: 19px; width: 299px; height: 58px; z-index: auto; right: auto; bottom: auto;">
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="rect ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" id="mockElement_9251291068846" style="position: absolute; top: 128.2px; left: 70px; width: 590px; z-index: auto; right: auto; height: 50px; bottom: auto;">
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="label ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="login" data-editable-mode="plain" id="mockElement_87629730570041" style="position: absolute; top: 8.1875px; left: 10px; z-index: auto; width: 565px; right: auto; height: 22px; bottom: auto;">
+						<div class="editableArea" id="editableArea_87629730570041"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">авторизоваться</font></font></div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div></div><div class="rect ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" id="mockElement_96603171386107" style="position: absolute; top: 229.2px; left: 73px; width: 580px;">
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="label ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="password" data-editable-mode="plain" id="mockElement_57478663503547" style="position: absolute; top: 11.2px; left: 9px; width: 560px;">
+						<div class="editableArea" id="editableArea_57478663503547"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">пароль</font></font></div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div></div></div><div class="dialogWindow ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="Сколько пациентов вы сегодня приняли?" data-editable-mode="plain" id="mockElement_87800623915561" style="position: absolute; top: 724.8px; left: 402px; z-index: auto; width: 400px; right: auto; height: 200px; bottom: auto;">
+						<div class="dialogWindow-bar">
+							<span class="editableArea" id="editableArea_87800623915561"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Сколько пациентов вы сегодня приняли?</font></font></span>
+							<span class="dialogWindow-closeButton"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">×</font></font></font></font></span>
+						</div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="spinner ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="10" data-editable-mode="plain" id="mockElement_97502678841390" style="position: absolute; top: 103px; left: 118.2px; z-index: auto; width: 160px; right: auto; height: 26px; bottom: auto;">
+						<span class="editableArea" id="editableArea_97502678841390"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10</font></font></span>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div></div><div class="grayrect ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" id="mockElement_22326986266044" style="position: absolute; top: 987.2px; left: 369.2px; height: 298px; width: 482px; z-index: auto; right: auto; bottom: auto;">
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div><div class="dropdownList ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="Название" data-editable-mode="plain" id="mockElement_7166297166888" style="position: absolute; top: 11px; left: 95px;">
+						<span class="editableArea" id="editableArea_7166297166888"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Название</font></font></span><font style="vertical-align: inherit;"><span class="mockelement-dropdown-arrow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">выпадающего </font></font></font></span><span class="editableArea"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">меню </font></font></font></span></font><span class="mockelement-dropdown-arrow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">▾</font></font></font></font></span>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="boxes-vertical ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="Внести пациентов; База данных; Лекарства" data-editable-mode="uielements" id="mockElement_93430455459737" style="position: absolute; top: 88.6px; left: 15px; width: 444px; height: 148px; z-index: auto; right: auto; bottom: auto;">
+						<div class="editableArea" id="editableArea_93430455459737"><ul><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Внести пациентов</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> База данных</font></font></li><li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Лекарства</font></font></li></ul></div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div></div><div class="label ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="Внести пациентов" data-editable-mode="plain" id="mockElement_17282832212653" style="position: absolute; top: 1358.4px; left: 484.2px; z-index: auto; width: 160px; right: auto; height: 22px; bottom: auto;">
+						<div class="editableArea" id="editableArea_17282832212653"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Внести пациентов</font></font></div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="table ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="
+| ФИО    | Дата рождения      |      Адрес проживания |  
+|:------|:-------:|--------:|
+| lorem | ipsum   | dolor   |
+| first | second  | third   |
+					" id="mockElement_68704137388968" style="position: absolute; top: 1386.8px; left: 281px; width: 590px; z-index: auto; right: auto; height: 86px; bottom: auto;">
+						<div class="editableArea" id="editableArea_68704137388968"><table>
+<thead>
+<tr>
+<th style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ФИО</font></font></th>
+<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Дата рождения</font></font></th>
+<th style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Адрес проживания</font></font></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorem</font></font></td>
+<td style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ipsum</font></font></td>
+<td style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">боль</font></font></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">первый</font></font></td>
+<td style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">второй</font></font></td>
+<td style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">третий</font></font></td>
+</tr>
+
+</tbody>
+</table></div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="rect ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" id="mockElement_98283061188552" style="position: absolute; top: 1345px; left: 269px; height: 157px; width: 614px;">
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="label ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="База данных" data-editable-mode="plain" id="mockElement_49703214729407" style="position: absolute; top: 1652.2px; left: 503.2px; z-index: auto; width: 160px; right: auto; height: 22px; bottom: auto;">
+						<div class="editableArea" id="editableArea_49703214729407"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">База данных</font></font></div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="table ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="
+| Дата осмотра   | Место осмотра     | Симптомы |
+|:------|:-------:|--------:|
+| lorem | ipsum   | dolor   |
+| first | second  | third   |
+					" id="mockElement_77410431400045" style="position: absolute; top: 1683px; left: 285px; z-index: auto; width: 300px; right: auto; height: 86px; bottom: auto;">
+						<div class="editableArea" id="editableArea_77410431400045"><table>
+<thead>
+<tr>
+<th style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Дата осмотра</font></font></th>
+<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Место осмотра</font></font></th>
+<th style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Симптомы</font></font></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorem</font></font></td>
+<td style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ipsum</font></font></td>
+<td style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">боль</font></font></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">первый</font></font></td>
+<td style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">второй</font></font></td>
+<td style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">третий</font></font></td>
+</tr>
+
+</tbody>
+</table></div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="table ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="
+| Диагноз    | Предписания (Назначения) |     
+|:------|:-------:|
+| lorem | ipsum   |
+| first | second  | 
+					" id="mockElement_1687720020063" style="position: absolute; top: 1683px; left: 582px; z-index: auto; width: 266px; right: auto; height: 86px; bottom: auto;">
+						<div class="editableArea" id="editableArea_1687720020063"><table>
+<thead>
+<tr>
+<th style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Диагноз</font></font></th>
+<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Предписания (Назначения)</font></font></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorem</font></font></td>
+<td style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ipsum</font></font></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">первый</font></font></td>
+<td style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">второй</font></font></td>
+</tr>
+
+</tbody>
+</table></div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="rect ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" id="mockElement_85182046904662" style="position: absolute; top: 1651px; left: 255.2px; width: 650px; height: 160px; z-index: auto; right: auto; bottom: auto;">
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="table ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="
+| Название    | Прием      |     Побочные действия |
+|:------|:-------:|--------:|
+| lorem | ipsum   | dolor   |
+| first | second  | third   |
+					" id="mockElement_90328808383457" style="position: absolute; top: 1891.8px; left: 267px; z-index: auto; width: 616px; right: auto; height: 86px; bottom: auto;">
+						<div class="editableArea" id="editableArea_90328808383457"><table>
+<thead>
+<tr>
+<th style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Название</font></font></th>
+<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Прием</font></font></th>
+<th style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Побочные действия</font></font></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorem</font></font></td>
+<td style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ipsum</font></font></td>
+<td style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">боль</font></font></td>
+</tr>
+
+<tr>
+<td style="text-align:left;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">первый</font></font></td>
+<td style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">второй</font></font></td>
+<td style="text-align:right;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">третий</font></font></td>
+</tr>
+
+</tbody>
+</table></div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="label ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" data-editable-content="Лекарства" data-editable-mode="plain" id="mockElement_61245840729007" style="position: absolute; top: 1855.6px; left: 520.2px; z-index: auto; width: 160px; right: auto; height: 22px; bottom: auto;">
+						<div class="editableArea" id="editableArea_61245840729007"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Лекарства</font></font></div>
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div><div class="rect ui-draggable ui-draggable-handle mockElement ui-resizable ui-droppable" id="mockElement_67512295882370" style="position: absolute; top: 1859px; left: 252px; z-index: auto; width: 648px; right: auto; height: 130px; bottom: auto;">
+					<div class="ui-resizable-handle ui-resizable-n" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90; display: block;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90; display: block;"></div></div></div>
+		</div>
+
+	<div id="toolbar">
+		<input type="file" id="loadFile" style="display:none">
+		<button id="loadFileButton"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">открыто</font></font></button>
+		<button id="saveFile"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Сохранить</font></font></button>
+
+		<button class="delete-element-button" title="удаляет текущий выбранный элемент (del)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">✖ Удалить элемент</font></font></button>
+		<button class="undelete-element-button" title="восстанавливает последний удаленный элемент (Ctrl + Z)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">↶</font></font></button>
+		<button class="duplicate-element-button" title="дублирует текущий выбранный элемент (Ctrl + D)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">⚭ Дублирующий элемент</font></font></button>
+		<button class="change-canvasize-button" title="изменить размер области, на которой вы размещаете элементы"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">⇲ Изменить размер холста</font></font></button>
+	<button title="экспорт в коде  »Сохранить« в коде ручки, чтобы получить URL с общим доступом"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Code к Codepen</font></font></button></div>
+
+
+	
+
+</div>
+
+<script src="scripts/webedit.js"></script>
+
+
+
+
+<div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google Переводчик"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Исходный текст</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Предложить лучший вариант перевода</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable" tabindex="-1" role="dialog" aria-describedby="changeCanvasSizeDialog" aria-labelledby="ui-id-1" style="display: none; position: absolute;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix ui-draggable-handle"><span id="ui-id-1" class="ui-dialog-title">&nbsp;</span><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" title="Close"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">близко</font></font></span></button></div><div id="changeCanvasSizeDialog" class="dialog ui-dialog-content ui-widget-content" style="display: block;">
+	<p>Change the size of the Canvas</p>
+	<label>Width:<br><input type="text" name="width"></label><br>
+	<label>Height:<br><input type="text" name="height"></label>
+	</div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"><span class="ui-button-text">OK</span></button><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button"><span class="ui-button-text">Cancel</span></button></div></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div><div class="goog-te-spinner-pos goog-te-spinner-pos-show"><div class="goog-te-spinner-animation goog-te-spinner-animation-show"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>
