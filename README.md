@@ -2,7 +2,7 @@
 University project with databases
 
 ### List :
-* Viktor Atlashkin - architect, project manager
-* Darya zhigulina - designer/graphical interface
-* Darya ryasnyanskaya - developer
-* Vladislav Tkachuk - tester, documentation
+* Viktor Atlashkin(atlashkin) - architect, project manager
+* Darya Zhigulina(zzhigulina) - designer/graphical interface
+* Darya Ryasnyanskaya(ryasnad) - developer
+* Vladislav Tkachuk(dlvtt) - tester, documentation
