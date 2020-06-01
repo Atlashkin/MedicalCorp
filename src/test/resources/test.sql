@@ -1,0 +1,1 @@
+insert into authorization (username, userpass) value ('victor', 'pass' )
