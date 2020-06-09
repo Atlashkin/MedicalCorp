@@ -8,7 +8,7 @@ class GUI3 {
         JFrame mn = new JFrame("MEDICAL CORP");
         mn.setVisible(true);
         mn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mn.setSize(750, 500);
+        mn.setSize(800, 500);
         mn.setResizable(false);
         mn.setLocationRelativeTo(null);
 

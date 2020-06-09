@@ -28,7 +28,7 @@ public class Test {
         panel1.add(lab2);
         panel1.add(pole2);
         panel1.add(button1);
-        panel1.add(new com.medicalcorp.GUI1.MyComponent());
+
         panel1.revalidate();
 
 

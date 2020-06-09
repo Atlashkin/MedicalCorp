@@ -15,6 +15,7 @@ public class Main {
     public static void main(String[] args) {
         String salt = "sol";
         BDW1 worker = new BDW1();
+
         JFrame window1 = getFrame();
         JPanel panel1 = new JPanel();
         window1.add(panel1);
@@ -43,20 +44,48 @@ public class Main {
         panel1.add(lab2);
         panel1.add(pole2);
         panel1.add(button1);
-        panel1.add(new com.medicalcorp.GUI1.MyComponent());
         panel1.revalidate();
 
+        JFrame mn = new JFrame("MEDICAL CORP");
+        mn.setVisible(true);
+        mn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mn.setSize(800, 500);
+        mn.setResizable(false);
+        mn.setLocationRelativeTo(null);
+
+        JPanel grid = new JPanel();
+        grid.setLayout(new GridLayout(7, 1, 20, 5));
+
+        JLabel l1 = new JLabel(" ГЛАВНОЕ МЕНЮ");
+        l1.setFont( new Font("Verdana", Font.PLAIN, 20));
+        JButton b1 = new JButton("ПАЦИЕНТЫ" );
+        JButton b2 = new JButton("ПЕРСОНАЛ" );
+        JButton b3 = new JButton("БАЗА ЛЕКАРСТВ" );
+        JButton b4 = new JButton("ПОИСК ПАЦИЕНТОВ" );
+        JButton b5 = new JButton("ПРОФИЛЬ" );
+        JLabel l2 = new JLabel("");
+        grid.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        grid.add(l1);
+        grid.add(b1);
+        grid.add(b2);
+        grid.add(b3);
+        grid.add(b4);
+        grid.add(b5);
+        grid.add(l2);
+        mn.add(grid);
+        mn.setVisible(false);
 
         try {
             Statement statement = worker.getConnection().createStatement();
 
-            button1.addActionListener(new ActionListener() {
+           button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
 
                     String querry = "select userpass from authorization where username = '" + pole1.getText()+"'" ;
 
                     try {
+
                         ResultSet resultSet = statement.executeQuery(querry);
                         resultSet.next();
                         System.out.println(resultSet.getString("userpass"));
@@ -70,6 +99,8 @@ public class Main {
                         System.out.println(pas12);
                         if (pas12 == pas22) {
                             System.out.println("OK");
+                            window1.setVisible(false);
+                            mn.setVisible(true);
                         }
                         else {
                             String messageerror = "Неверный пароль";
