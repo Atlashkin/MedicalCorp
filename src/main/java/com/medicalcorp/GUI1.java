@@ -1,55 +1,54 @@
-package com.medicalcorp;
-
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class GUI1 {
+    static JFrame jFrame = getFrame();
+    static JFrame getFrame() {
+        JFrame jFrame = new JFrame() {};
 
-    JFrame window1 = getFrame();
+        jFrame.setSize(750, 500);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.setResizable(false);
+        jFrame.setLocationRelativeTo(null);
+        return jFrame;
 
-    public static void main(String[] args) {
-        JPanel panel1 = new JPanel();
-        JFrame window1 = getFrame();
-        window1.add(panel1);
-        panel1.setLayout(null);
+    }
+
+    public static void main(String[] args) throws Exception{
+        JPanel jPanel = new JPanel();
+        jFrame.add(jPanel);
+        jPanel.setLayout(null);
         JLabel mc = new JLabel("MEDICAL CORP");
         mc.setFont( new Font("Verdana", Font.PLAIN, 25));
         mc.setBounds(271, 50, 200, 40);
-        JButton button1 = new JButton("ВОЙТИ");
-        button1.setBounds(325, 350, 85, 40);
-        JTextField pole1 = new JTextField("");
-        pole1.setBounds(220, 150, 300, 40);
-        pole1.setFont( new Font("Verdana", Font.PLAIN, 16));
-        JTextField pole2 = new JPasswordField("");
-        pole2.setBounds(220, 250, 300, 40);
-        pole2.setFont( new Font("Verdana", Font.PLAIN, 16));
-        Label lab1 = new Label("Имя пользователя");
-        lab1.setFont( new Font("Verdana", Font.PLAIN, 16));
-        lab1.setBounds(220, 110, 200, 40);
-        Label lab2 = new Label("Пароль");
-        lab2.setFont( new Font("Verdana", Font.PLAIN, 16));
-        lab2.setBounds(220, 210, 200, 40);
 
-        panel1.add(mc);
-        panel1.add(lab1);
-        panel1.add(pole1);
-        panel1.add(lab2);
-        panel1.add(pole2);
-        panel1.add(button1);
-        panel1.revalidate();
+        JLabel user = new JLabel("Введите имя пользователя:");
+        user.setBounds(285, 110, 200, 40);
+
+        JTextField userText = new JTextField(20);
+        userText.setBounds(220, 150, 300, 40);
+
+        JLabel pas = new JLabel("Введите пароль:");
+        pas.setBounds(320, 210, 200, 40);
+
+        JTextField pasText = new JTextField();
+        pasText.setBounds(220, 250, 300, 40);
+
+        JButton vhod = new JButton("Войти");
+        vhod.setFont( new Font("Verdana", Font.PLAIN, 15));
+        vhod.setBounds(325, 350, 85, 40);
+
+        jPanel.add(vhod);
+        jPanel.add(mc);
+        jPanel.add(user);
+        jPanel.add(userText);
+        jPanel.add(pas);
+        jPanel.add(pasText);
+        jPanel.revalidate();
+        jFrame.setVisible(true);
     }
 
 
-    private static JFrame getFrame() {
-        JFrame window1 = new JFrame();
-        window1.setVisible(true);
-        window1.setDefaultCloseOperation(window1.EXIT_ON_CLOSE);
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension dimension = toolkit.getScreenSize();
-        window1.setBounds(dimension.width/2 -400, dimension.height/2 - 250 , 800, 500);
-        window1.setTitle("MedicalCorp.");
-        return window1;
-    }}
 
-
-
+}

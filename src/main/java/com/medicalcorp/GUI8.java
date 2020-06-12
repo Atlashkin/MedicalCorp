@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-class GUI3 {
+class GUI8 {
     static JFrame jFrame = getFrame();
     static JFrame getFrame() {
 
@@ -29,7 +29,7 @@ class GUI3 {
         jFrame.add(jPanel);
         jPanel.setLayout(null);
 
-        JLabel mc = new JLabel("ПАЦИЕНТЫ");
+        JLabel mc = new JLabel("ПЕРСОНАЛ");
         mc.setFont( new Font("Verdana", Font.PLAIN, 25));
         mc.setBounds(20, 5, 400, 50);
 
@@ -37,12 +37,9 @@ class GUI3 {
         gm.setFont( new Font("Verdana", Font.PLAIN, 10));
         gm.setBounds(630, 15, 120, 30);
 
-        JButton ad = new JButton("Добавить нового пациента");
-        ad.setFont( new Font("Verdana", Font.PLAIN, 10));
-        ad.setBounds(370, 15, 250, 30);
 
-        Object[] headers = { "№", "ФИО", "Лечащий врач", "Дата посещения", "Дата выписки", "Диагноз"};
-        Object[][] data = {{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "o000000000000000000000o", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"}};
+        Object[] headers = { "№", "ФИО", "Возраст", "Должность"};
+        Object[][] data = {{"1", "oo", "pp", "rr"},{"1", "oo", "pp", "rr"},{"1", "oo", "pp", "rr"},{"1", "oo", "pp", "rr"},{"1", "oo", "pp", "rr"},{"1", "oo", "pp", "rr"}};
 
 
         JTable patients;
@@ -58,31 +55,25 @@ class GUI3 {
         patients.getColumnModel().getColumn(0).setMinWidth(10);
         patients.getColumnModel().getColumn(0).setMaxWidth(50);
 
-        patients.getColumnModel().getColumn(1).setMinWidth(50);
-        patients.getColumnModel().getColumn(1).setMaxWidth(150);
+        patients.getColumnModel().getColumn(1).setMinWidth(100);
+        patients.getColumnModel().getColumn(1).setMaxWidth(250);
 
         patients.getColumnModel().getColumn(2).setMinWidth(50);
         patients.getColumnModel().getColumn(2).setMaxWidth(150);
 
-        patients.getColumnModel().getColumn(3).setMinWidth(50);
-        patients.getColumnModel().getColumn(3).setMaxWidth(150);
+        patients.getColumnModel().getColumn(3).setMinWidth(100);
+        patients.getColumnModel().getColumn(3).setMaxWidth(250);
 
-        patients.getColumnModel().getColumn(4).setMinWidth(50);
-        patients.getColumnModel().getColumn(4).setMaxWidth(150);
-
-        patients.getColumnModel().getColumn(5).setMinWidth(50);
-        patients.getColumnModel().getColumn(5).setMaxWidth(150);
 
 
 
         jPanel.add(gm);
         jPanel.add(mc);
-        jPanel.add(ad);
         jPanel.add(sr);
 
         SwingUtilities.invokeLater((new Runnable() {
             public void run() {
-                new GUI3();
+                new GUI8();
             }
         }));
         jFrame.setVisible(true);

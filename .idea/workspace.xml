@@ -80,19 +80,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="GUI1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI1" />
-      <module name="ProjectMedicalCorp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.medicalcorp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GUI2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI2" />
       <module name="ProjectMedicalCorp" />
@@ -106,8 +93,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GUI3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI3" />
+    <configuration name="GUI52" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI52" />
+      <module name="ProjectMedicalCorp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GUI53" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI53" />
+      <module name="ProjectMedicalCorp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GUI8 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI8" />
       <module name="ProjectMedicalCorp" />
       <extension name="coverage">
         <pattern>
@@ -135,9 +136,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.GUI1" />
-        <item itemvalue="Application.GUI3" />
         <item itemvalue="Application.GUI2" />
+        <item itemvalue="Application.GUI8 (1)" />
+        <item itemvalue="Application.GUI53" />
+        <item itemvalue="Application.GUI52" />
       </list>
     </recent_temporary>
   </component>
@@ -195,6 +197,8 @@
       <workItem from="1591549797436" duration="20000" />
       <workItem from="1591634864206" duration="4714000" />
       <workItem from="1591685649632" duration="2941000" />
+      <workItem from="1591894860785" duration="3883000" />
+      <workItem from="1591983265473" duration="13628000" />
     </task>
     <servers />
   </component>
@@ -202,6 +206,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="275" y="27" key="#Auto_Import" timestamp="1591987927539">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="27" key="#Auto_Import/0.0.1366.738@0.0.1366.738" timestamp="1591987927539" />
     <state x="275" y="27" key="#Project_Structure" timestamp="1589741395558">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -218,30 +226,34 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="453" y="171" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1589741485750" />
-    <state x="488" y="52" key="#com.intellij.ide.util.MemberChooser" timestamp="1589833660631">
+    <state x="488" y="52" key="#com.intellij.ide.util.MemberChooser" timestamp="1591989372572">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="488" y="52" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1589833660631" />
+    <state x="488" y="52" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1591989372572" />
+    <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1591995484554">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="92" y="92" width="1182" height="554" key="DiffContextDialog/0.0.1366.738@0.0.1366.738" timestamp="1591995484554" />
     <state x="481" y="71" key="ExecutionTargetDialog" timestamp="1589817647153">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="481" y="71" key="ExecutionTargetDialog/0.0.1366.738@0.0.1366.738" timestamp="1589817647153" />
-    <state width="1323" height="2" key="GridCell.Tab.0.bottom" timestamp="1591688813659">
+    <state width="1323" height="128" key="GridCell.Tab.0.bottom" timestamp="1591998681639">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1591688813659" />
-    <state width="1323" height="2" key="GridCell.Tab.0.center" timestamp="1591688813659">
+    <state width="1323" height="128" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1591998681639" />
+    <state width="1323" height="128" key="GridCell.Tab.0.center" timestamp="1591998681639">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1591688813659" />
-    <state width="1323" height="2" key="GridCell.Tab.0.left" timestamp="1591688813659">
+    <state width="1323" height="128" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1591998681638" />
+    <state width="1323" height="128" key="GridCell.Tab.0.left" timestamp="1591998681638">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1591688813659" />
-    <state width="1323" height="2" key="GridCell.Tab.0.right" timestamp="1591688813659">
+    <state width="1323" height="128" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1591998681638" />
+    <state width="1323" height="128" key="GridCell.Tab.0.right" timestamp="1591998681639">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="2" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1591688813659" />
+    <state width="1323" height="128" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1591998681639" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1591641537336">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -266,18 +278,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1590601356137" />
-    <state x="379" y="192" key="com.intellij.ide.util.TipDialog" timestamp="1591685647793">
+    <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1591995456364">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="379" y="192" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1591685647793" />
+    <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1366.738@0.0.1366.738" timestamp="1591995456364" />
+    <state x="379" y="192" key="com.intellij.ide.util.TipDialog" timestamp="1591984372565">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="379" y="192" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1591984372565" />
     <state x="330" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589832758088">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="330" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.738@0.0.1366.738" timestamp="1589832758088" />
-    <state x="413" y="124" key="extract.method.dialog" timestamp="1589818617213">
+    <state x="413" y="124" key="extract.method.dialog" timestamp="1591987695546">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="413" y="124" key="extract.method.dialog/0.0.1366.738@0.0.1366.738" timestamp="1589818617213" />
+    <state x="413" y="124" key="extract.method.dialog/0.0.1366.738@0.0.1366.738" timestamp="1591987695546" />
     <state x="339" y="165" key="run.anything.popup" timestamp="1590333173737">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
