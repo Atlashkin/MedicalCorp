@@ -15,7 +15,7 @@ class GUI5 {
         return jFrame;
 
     }
-    public static void main(String[] args) throws Exception{
+    public GUI5() throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
         jPanel.setLayout(null);

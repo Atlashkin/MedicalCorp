@@ -2,8 +2,11 @@ package com.medicalcorp;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 class GUI2 extends Main {
     static JFrame jFrame = Main.getFrame();
@@ -36,14 +39,18 @@ class GUI2 extends Main {
         b5.setFont( new Font("Verdana", Font.PLAIN, 15));
         b5.setBounds(200, 295, 350, 50);
 
-
+        Statement statement = worker.getConnection().createStatement();
+        ResultSet resultSet = statement.executeQuery("select firstname, lastname, middlename from users where email = '" + Email+"'");
+        resultSet.next();
+        String  firstname = resultSet.getString("firstname");
+        String  lastname = resultSet.getString("lastname");
+        String  middlename = resultSet.getString("middlename");
         JLabel l2 = new JLabel("Вы вошли под именем:");
         l2.setFont( new Font("Verdana", Font.PLAIN, 18));
         l2.setBounds(50, 370, 400, 50);
-        JLabel l3 = new JLabel(getEmail());
+        JLabel l3 = new JLabel(lastname+" "+firstname+" "+middlename);
         l3.setFont( new Font("Verdana", Font.PLAIN, 18));
         l3.setBounds(300, 370, 400, 50);
-
 
 
 
@@ -59,8 +66,60 @@ class GUI2 extends Main {
         jPanel.revalidate();
         jFrame.setVisible(true);
 
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                jFrame.setVisible(false);
+                try {
+                    new GUI3();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        b2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                jFrame.setVisible(false);
+                try {
+                    new GUI8();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                jFrame.setVisible(false);
+                try {
+                    new GUI7();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        b4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
-
+            }
+        });
+        b5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                jFrame.setVisible(false);
+                try {
+                    new GUI5();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
 

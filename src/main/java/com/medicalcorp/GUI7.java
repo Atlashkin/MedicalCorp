@@ -24,7 +24,7 @@ class GUI7 {
 
     }
 
-    public static void main(String[] args) throws Exception{
+    public GUI7() throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
         jPanel.setLayout(null);
@@ -76,7 +76,11 @@ class GUI7 {
 
         SwingUtilities.invokeLater((new Runnable() {
             public void run() {
-                new GUI7();
+                try {
+                    new GUI7();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }));
         jFrame.setVisible(true);
