@@ -40,9 +40,10 @@ class GUI2 extends Main {
         JLabel l2 = new JLabel("Вы вошли под именем:");
         l2.setFont( new Font("Verdana", Font.PLAIN, 18));
         l2.setBounds(50, 370, 400, 50);
-        JTextField l2Text = new JTextField(20);
+        JLabel l3 = new JLabel(getEmail());
+        l3.setFont( new Font("Verdana", Font.PLAIN, 18));
+        l3.setBounds(300, 370, 400, 50);
 
-        l2Text.setBounds(300, 370, 400, 50);
 
 
 
@@ -53,7 +54,7 @@ class GUI2 extends Main {
         jPanel.add(b4);
         jPanel.add(b5);
         jPanel.add(l2);
-//        jPanel.add(l3);
+        jPanel.add(l3);
 
         jPanel.revalidate();
         jFrame.setVisible(true);

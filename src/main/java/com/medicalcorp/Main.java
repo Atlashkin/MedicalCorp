@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class Main extends JFrame  {
     String salt = "sol";
     BDW1 worker = new BDW1();
-
+    static String Email;
     public void GUI1()  {
         JFrame window1 = getFrame();
         JPanel panel1 = new JPanel();
@@ -48,7 +48,7 @@ public class Main extends JFrame  {
 
                                       @Override
                                       public void actionPerformed(ActionEvent e) {
-                                          String Email = pole1.getText();
+                                           Email = pole1.getText() ;
 
                                           try {
 
@@ -90,7 +90,9 @@ public class Main extends JFrame  {
 
     }
 
-
+public String getEmail() {
+        return Email;
+    }
 
 
 
@@ -101,7 +103,7 @@ public class Main extends JFrame  {
             @Override
             public void run() {
 
-                    new Main().GUI1();
+                new Main().GUI1();
 
             }
         });
