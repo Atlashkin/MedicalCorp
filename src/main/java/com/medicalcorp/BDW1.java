@@ -24,7 +24,7 @@ public class BDW1 {
         }
     }
 
-    public static Connection getConnection() {
+    public  Connection getConnection() {
         return connection;
     }
 

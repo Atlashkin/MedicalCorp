@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c717761-384b-4d4b-a799-d86c43ebbbda" name="Default Changelist" comment="" />
+    <list default="true" id="1c717761-384b-4d4b-a799-d86c43ebbbda" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/MedicalCorp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/93708443-f985-492d-bebf-80dcb71b757a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/93708443-f985-492d-bebf-80dcb71b757a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/BDW1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/BDW1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/ProjectMedicalCorp.kotlin_module" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +67,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -72,8 +86,10 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite&#10;mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -121,8 +137,10 @@
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.medicalcorp.Main" />
-      <module name="ProjectMedicalCorp" />
+      <module name="MedicalCorp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.medicalcorp.*" />
@@ -199,6 +217,8 @@
       <workItem from="1591685649632" duration="2941000" />
       <workItem from="1591894860785" duration="3883000" />
       <workItem from="1591983265473" duration="13628000" />
+      <workItem from="1592050585693" duration="5558000" />
+      <workItem from="1592056818132" duration="3456000" />
     </task>
     <servers />
   </component>
@@ -210,6 +230,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="27" key="#Auto_Import/0.0.1366.738@0.0.1366.738" timestamp="1591987927539" />
+    <state x="400" y="27" key="#Main" timestamp="1592051411506">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="400" y="27" key="#Main/0.0.1366.738@0.0.1366.738" timestamp="1592051411506" />
     <state x="275" y="27" key="#Project_Structure" timestamp="1589741395558">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -238,22 +262,26 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="481" y="71" key="ExecutionTargetDialog/0.0.1366.738@0.0.1366.738" timestamp="1589817647153" />
-    <state width="1323" height="128" key="GridCell.Tab.0.bottom" timestamp="1591998681639">
+    <state x="463" y="110" key="FileChooserDialogImpl" timestamp="1592051117225">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1591998681639" />
-    <state width="1323" height="128" key="GridCell.Tab.0.center" timestamp="1591998681639">
+    <state x="463" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592051117225" />
+    <state width="1323" height="128" key="GridCell.Tab.0.bottom" timestamp="1592059809630">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1591998681638" />
-    <state width="1323" height="128" key="GridCell.Tab.0.left" timestamp="1591998681638">
+    <state width="1323" height="128" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1592059809630" />
+    <state width="1323" height="128" key="GridCell.Tab.0.center" timestamp="1592059809629">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1591998681638" />
-    <state width="1323" height="128" key="GridCell.Tab.0.right" timestamp="1591998681639">
+    <state width="1323" height="128" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1592059809629" />
+    <state width="1323" height="128" key="GridCell.Tab.0.left" timestamp="1592059809593">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1591998681639" />
+    <state width="1323" height="128" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1592059809593" />
+    <state width="1323" height="128" key="GridCell.Tab.0.right" timestamp="1592059809629">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="128" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1592059809629" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1591641537336">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -282,10 +310,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1366.738@0.0.1366.738" timestamp="1591995456364" />
-    <state x="379" y="192" key="com.intellij.ide.util.TipDialog" timestamp="1591984372565">
+    <state x="379" y="192" key="com.intellij.ide.util.TipDialog" timestamp="1592050584810">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="379" y="192" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1591984372565" />
+    <state x="379" y="192" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1592050584810" />
     <state x="330" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589832758088">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

@@ -12,7 +12,7 @@ public class Main extends JFrame  {
     String salt = "sol";
     BDW1 worker = new BDW1();
 
-    public Main()  {
+    public void GUI1()  {
         JFrame window1 = getFrame();
         JPanel panel1 = new JPanel();
         panel1.setLayout(null);
@@ -41,14 +41,17 @@ public class Main extends JFrame  {
         panel1.add(pole2);
         panel1.add(button1);
         window1.add(panel1);
-        String name = pole1.getText();
+
 
         button1.addActionListener(new ActionListener() {
 
 
                                       @Override
                                       public void actionPerformed(ActionEvent e) {
+                                          String Email = pole1.getText();
+
                                           try {
+
                                               Statement statement = worker.getConnection().createStatement();
 
 
@@ -84,7 +87,10 @@ public class Main extends JFrame  {
 
         pack();
 
+
     }
+
+
 
 
 
@@ -95,7 +101,7 @@ public class Main extends JFrame  {
             @Override
             public void run() {
 
-                    new Main();
+                    new Main().GUI1();
 
             }
         });

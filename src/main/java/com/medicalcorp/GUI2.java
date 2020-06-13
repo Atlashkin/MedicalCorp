@@ -2,13 +2,11 @@ package com.medicalcorp;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 class GUI2 extends Main {
-    static JFrame jFrame = getFrame();
+    static JFrame jFrame = Main.getFrame();
 
 
     public GUI2() throws SQLException {
@@ -43,7 +41,9 @@ class GUI2 extends Main {
         l2.setFont( new Font("Verdana", Font.PLAIN, 18));
         l2.setBounds(50, 370, 400, 50);
         JTextField l2Text = new JTextField(20);
+
         l2Text.setBounds(300, 370, 400, 50);
+
 
 
         jPanel.add(mc);
@@ -53,13 +53,14 @@ class GUI2 extends Main {
         jPanel.add(b4);
         jPanel.add(b5);
         jPanel.add(l2);
-        jPanel.add(l2Text);
+//        jPanel.add(l3);
 
         jPanel.revalidate();
         jFrame.setVisible(true);
+
+
+
     }
-
-
 
 
 }
