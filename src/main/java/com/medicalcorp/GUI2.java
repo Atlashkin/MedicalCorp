@@ -10,7 +10,6 @@ import java.sql.Statement;
 
 class GUI2  {
     static JFrame jFrame2 = Main.getFrame();
-    BDW1 worker = new BDW1();
     static String  firstname ;
     static String  lastname ;
     static String  middlename ;
@@ -41,7 +40,7 @@ class GUI2  {
         b5.setFont( new Font("Verdana", Font.PLAIN, 15));
         b5.setBounds(200, 295, 350, 50);
 
-        Statement statement = worker.getConnection().createStatement();
+        Statement statement = Main.worker.getConnection().createStatement();
         ResultSet resultSet = statement.executeQuery("select firstname, lastname, middlename from users where email = '" + Main.Email+"'");
         resultSet.next();
          firstname = resultSet.getString("firstname");

@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class Main extends JFrame  {
     String salt = "sol";
-    BDW1 worker = new BDW1();
+    static BDW1 worker = new BDW1();
     static String Email;
     public void GUI1()  {
         JFrame window1 = getFrame();

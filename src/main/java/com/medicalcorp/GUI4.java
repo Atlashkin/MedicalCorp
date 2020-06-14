@@ -6,25 +6,10 @@ import java.awt.event.*;
 
 
 class GUI4 {
-    static JFrame jFrame = getFrame();
-    static JFrame getFrame() {
+    static JFrame jFrame = Main.getFrame();
 
 
-        JFrame jFrame = new JFrame() {};
-        //jFrame.getContentPane().setLayout(null);
-        jFrame.setSize(800, 500);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setResizable(false);
-        jFrame.setLocationRelativeTo(null);
-
-
-
-
-        return jFrame;
-
-    }
-
-    public static void main(String[] args) throws Exception{
+    public GUI4() throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
         jPanel.setLayout(null);
@@ -82,9 +67,32 @@ class GUI4 {
         gm.setFont( new Font("Verdana", Font.PLAIN, 10));
         gm.setBounds(630, 15, 120, 30);
 
+        gm.addActionListener(new ActionListener() { //кнопка главного меню
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                GUI3.jFrame3.dispose();
+                GUI3.jFrame3.setVisible(false);
+                GUI2.jFrame2.show();
+                GUI2.jFrame2.setVisible(true);
+
+            }
+        });
+
         JButton back = new JButton("Назад");
         back.setFont( new Font("Verdana", Font.PLAIN, 10));
         back.setBounds(630, 55, 120, 30);
+
+        back.addActionListener(new ActionListener() { //кнопка главного меню
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+                jFrame.setVisible(false);
+
+
+            }
+        });
 
         JButton away = new JButton("Выписать");
         away.setFont( new Font("Verdana", Font.PLAIN, 10));
@@ -94,6 +102,15 @@ class GUI4 {
         save.setFont( new Font("Verdana", Font.PLAIN, 10));
         save.setBounds(630, 400, 120, 30);
 
+        save.addActionListener(new ActionListener() { //кнопка главного меню
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+                jFrame.setVisible(false);
+
+
+            }
+        });
 
         Object[] headers = { "№", "Название", "Способ приема", "Описание", "Побочное действие"};
         Object[][] data = {{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"}};
@@ -131,7 +148,7 @@ class GUI4 {
         jPanel.add(pat);
         jPanel.add(patText);
         jPanel.add(back);
-        jPanel.add(away);
+//        jPanel.add(away);
         jPanel.add(save);
         jPanel.add(sr);
         jPanel.add(dr);
@@ -147,12 +164,16 @@ class GUI4 {
         jPanel.add(med);
 
 
-        SwingUtilities.invokeLater((new Runnable() {
-            public void run() {
-                new GUI4();
-            }
-        }));
-        jFrame.setVisible(true);
+//        SwingUtilities.invokeLater((new Runnable() {
+//            public void run() {
+//                try {
+//                    new GUI4();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }));
+//        jFrame.setVisible(true);
 
 
         jPanel.revalidate();

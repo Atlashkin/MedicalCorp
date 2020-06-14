@@ -36,6 +36,20 @@ class GUI3  {
         ad.setFont( new Font("Verdana", Font.PLAIN, 10));
         ad.setBounds(370, 15, 250, 30);
 
+        ad.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//                jFrame3.dispose();
+//                jFrame3.setVisible(false);
+                try {
+                    new GUI4();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                GUI4.jFrame.setVisible(true);
+            }
+        });
+
         Object[] headers = { "№", "ФИО", "Лечащий врач", "Дата посещения", "Дата выписки", "Диагноз"};
         Object[][] data = {{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "o000000000000000000000o", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"}};
 
@@ -75,15 +89,15 @@ class GUI3  {
         jPanel.add(ad);
         jPanel.add(sr);
 
-        SwingUtilities.invokeLater((new Runnable() {
-            public void run() {
-                try {
-                    new GUI3();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }));
+//        SwingUtilities.invokeLater((new Runnable() {
+//            public void run() {
+//                try {
+//                    new GUI3();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }));
 //        jFrame3.setVisible(true);
 
 
