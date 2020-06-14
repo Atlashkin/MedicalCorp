@@ -1,3 +1,5 @@
+package com.medicalcorp;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

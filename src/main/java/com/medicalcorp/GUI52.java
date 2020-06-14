@@ -1,3 +1,5 @@
+package com.medicalcorp;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -65,6 +67,15 @@ class GUI52 {
         jPanel.add(save);
         jPanel.add(no);
 
+        SwingUtilities.invokeLater((new Runnable() {
+            public void run() {
+                try {
+                    new GUI5();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }));
 
         jPanel.revalidate();
         jFrame.setVisible(true);

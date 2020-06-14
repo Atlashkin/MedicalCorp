@@ -99,7 +99,60 @@ class GUI5 {
 
         jPanel.revalidate();
         jFrame.setVisible(true);
+
+        gm.addActionListener(new ActionListener() { //кнопка главного меню
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                try {
+                    new GUI2();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        log.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                try {
+                    new GUI51();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+       pas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                try {
+                    new GUI52();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        pas.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                try {
+                    new GUI53();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
     }
+
 
 
 

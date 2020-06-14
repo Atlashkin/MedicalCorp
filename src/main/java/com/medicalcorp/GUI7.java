@@ -74,19 +74,26 @@ class GUI7 {
         jPanel.add(mc);
         jPanel.add(sr);
 
-        SwingUtilities.invokeLater((new Runnable() {
-            public void run() {
-                try {
-                    new GUI7();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }));
+
         jFrame.setVisible(true);
 
 
         jPanel.revalidate();
+
+
+
+        gm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                try {
+                    new GUI2();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
     }
 
 }
