@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1c717761-384b-4d4b-a799-d86c43ebbbda" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI51.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI51.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI52.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI52.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,18 +91,6 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="GUI2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI2" />
@@ -152,7 +142,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.medicalcorp.Main" />
-      <module name="ProjectMedicalCorp" />
+      <module name="MedicalCorp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.medicalcorp.*" />
@@ -172,6 +162,28 @@
         <item itemvalue="Application.GUI53" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:bd_medicalcorp@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:bd_medicalcorp@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@aef1177" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -231,12 +243,12 @@
       <option name="project" value="LOCAL" />
       <updated>1592136080921</updated>
     </task>
-    <task id="LOCAL-00004" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/medicalcorp/GUI51.java&#10;#&#9;src/main/java/com/medicalcorp/GUI52.java">
-      <created>1592147306370</created>
+    <task id="LOCAL-00004" summary="upd">
+      <created>1592144606886</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1592147306370</updated>
+      <updated>1592144606886</updated>
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
@@ -246,8 +258,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="upd" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/medicalcorp/GUI51.java&#10;#&#9;src/main/java/com/medicalcorp/GUI52.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/medicalcorp/GUI51.java&#10;#&#9;src/main/java/com/medicalcorp/GUI52.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="upd" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="27" key="#Auto_Import" timestamp="1591987927539">
@@ -282,10 +293,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="488" y="52" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1592063492764" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1592136072463">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1592144589959">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1592136072463" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1592144589959" />
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1591995484554">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -298,22 +309,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592051117225" />
-    <state width="1323" height="130" key="GridCell.Tab.0.bottom" timestamp="1592144279972">
+    <state width="1323" height="130" key="GridCell.Tab.0.bottom" timestamp="1592146664021">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="130" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1592144279972" />
-    <state width="1323" height="130" key="GridCell.Tab.0.center" timestamp="1592144279972">
+    <state width="1323" height="130" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1592146664021" />
+    <state width="1323" height="130" key="GridCell.Tab.0.center" timestamp="1592146664021">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="130" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1592144279972" />
-    <state width="1323" height="130" key="GridCell.Tab.0.left" timestamp="1592144279972">
+    <state width="1323" height="130" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1592146664021" />
+    <state width="1323" height="130" key="GridCell.Tab.0.left" timestamp="1592146664021">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="130" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1592144279972" />
-    <state width="1323" height="130" key="GridCell.Tab.0.right" timestamp="1592144279972">
+    <state width="1323" height="130" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1592146664021" />
+    <state width="1323" height="130" key="GridCell.Tab.0.right" timestamp="1592146664021">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="130" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1592144279972" />
+    <state width="1323" height="130" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1592146664021" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1591641537336">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -338,10 +349,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1590601356137" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1592136095660">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1592144621711">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1592136095660" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1592144621711" />
     <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1591995456364">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
