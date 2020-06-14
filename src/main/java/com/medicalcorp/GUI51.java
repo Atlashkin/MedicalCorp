@@ -2,8 +2,7 @@ package com.medicalcorp;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 class GUI51 {
     static JFrame jFrame = getFrame();
@@ -18,7 +17,7 @@ class GUI51 {
 
     }
 
-    public GUI51() throws Exception{
+    public static void main(String[] args) throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
         jPanel.setLayout(null);
@@ -69,55 +68,14 @@ class GUI51 {
         SwingUtilities.invokeLater((new Runnable() {
             public void run() {
                 try {
-                    new GUI51();
+                    new GUI5();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
             }
         }));
         jPanel.revalidate();
-
-
-        no.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                jFrame.dispose();
-                jFrame.setVisible(false);
-                GUI5.jFrame.show();
-                GUI5.jFrame.setVisible(true);
-                try {
-
-                    new GUI5();
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-
-        save.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String log = "root";
-                String login = passwText.getText();
-                if (log.equals(login)) {
-                    jFrame.dispose();
-                    jFrame.setVisible(false);
-                    GUI5.jFrame.show();
-                    GUI5.jFrame.setVisible(true);
-                    try {
-
-                        new GUI5();
-
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-
-
-            }
-        });
+        jFrame.setVisible(true);
     }
 
 

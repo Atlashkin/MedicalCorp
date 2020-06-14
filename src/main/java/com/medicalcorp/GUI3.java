@@ -5,28 +5,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-class GUI3 {
-    static JFrame jFrame = getFrame();
-    static JFrame getFrame() {
+class GUI3  {
+    static JFrame jFrame3 = Main.getFrame();
 
-
-        JFrame jFrame = new JFrame() {};
-        //jFrame.getContentPane().setLayout(null);
-        jFrame.setSize(800, 500);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setResizable(false);
-        jFrame.setLocationRelativeTo(null);
-
-
-
-
-        return jFrame;
-
-    }
 
     public GUI3() throws Exception{
         JPanel jPanel = new JPanel();
-        jFrame.add(jPanel);
+        jFrame3.add(jPanel);
         jPanel.setLayout(null);
 
         JLabel mc = new JLabel("ПАЦИЕНТЫ");
@@ -36,6 +21,16 @@ class GUI3 {
         JButton gm = new JButton("Главное меню");
         gm.setFont( new Font("Verdana", Font.PLAIN, 10));
         gm.setBounds(630, 15, 120, 30);
+
+        gm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame3.dispose();
+                jFrame3.setVisible(false);
+                GUI2.jFrame2.show();
+                GUI2.jFrame2.setVisible(true);
+            }
+        });
 
         JButton ad = new JButton("Добавить нового пациента");
         ad.setFont( new Font("Verdana", Font.PLAIN, 10));
@@ -89,7 +84,7 @@ class GUI3 {
                 }
             }
         }));
-        jFrame.setVisible(true);
+//        jFrame3.setVisible(true);
 
 
         jPanel.revalidate();

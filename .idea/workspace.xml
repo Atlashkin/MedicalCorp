@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c717761-384b-4d4b-a799-d86c43ebbbda" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI51.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI51.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI52.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI52.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI53.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI53.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI7.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -226,7 +228,6 @@
       <workItem from="1591983265473" duration="13628000" />
       <workItem from="1592050585693" duration="5558000" />
       <workItem from="1592056818132" duration="6091000" />
-      <workItem from="1592134296787" duration="7313000" />
     </task>
     <task id="LOCAL-00001" summary="upd">
       <created>1592061149856</created>
@@ -235,21 +236,7 @@
       <option name="project" value="LOCAL" />
       <updated>1592061149856</updated>
     </task>
-    <task id="LOCAL-00002" summary="upd">
-      <created>1592134372405</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1592134372405</updated>
-    </task>
-    <task id="LOCAL-00003" summary="upd">
-      <created>1592134671217</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1592134671217</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,9 +247,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -389,5 +374,16 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1590333173737" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

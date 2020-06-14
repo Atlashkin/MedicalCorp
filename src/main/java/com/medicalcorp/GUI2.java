@@ -8,13 +8,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-class GUI2 extends Main {
-    static JFrame jFrame = Main.getFrame();
-
+class GUI2  {
+    static JFrame jFrame2 = Main.getFrame();
+    BDW1 worker = new BDW1();
 
     public GUI2() throws SQLException {
         JPanel jPanel = new JPanel();
-        jFrame.add(jPanel);
+        jFrame2.add(jPanel);
         jPanel.setLayout(null);
 
         JLabel mc = new JLabel("ГЛАВНОЕ МЕНЮ");
@@ -40,7 +40,7 @@ class GUI2 extends Main {
         b5.setBounds(200, 295, 350, 50);
 
         Statement statement = worker.getConnection().createStatement();
-        ResultSet resultSet = statement.executeQuery("select firstname, lastname, middlename from users where email = '" + Email+"'");
+        ResultSet resultSet = statement.executeQuery("select firstname, lastname, middlename from users where email = '" + Main.Email+"'");
         resultSet.next();
         String  firstname = resultSet.getString("firstname");
         String  lastname = resultSet.getString("lastname");
@@ -64,37 +64,39 @@ class GUI2 extends Main {
         jPanel.add(l3);
 
         jPanel.revalidate();
-        jFrame.setVisible(true);
+        jFrame2.setVisible(true);
 
         b1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                jFrame.setVisible(false);
+                jFrame2.dispose();
+                jFrame2.setVisible(false);
                 try {
                     new GUI3();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+                GUI3.jFrame3.setVisible(true);
             }
         });
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                jFrame.setVisible(false);
+                jFrame2.dispose();
+                jFrame2.setVisible(false);
                 try {
                     new GUI8();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+                GUI8.jFrame8.setVisible(true);
             }
         });
         b3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                jFrame.setVisible(false);
+                jFrame2.dispose();
+                jFrame2.setVisible(false);
                 try {
                     new GUI7();
                 } catch (Exception ex) {
@@ -111,8 +113,8 @@ class GUI2 extends Main {
         b5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                jFrame.setVisible(false);
+                jFrame2.dispose();
+                jFrame2.setVisible(false);
                 try {
                     new GUI5();
                 } catch (Exception ex) {
