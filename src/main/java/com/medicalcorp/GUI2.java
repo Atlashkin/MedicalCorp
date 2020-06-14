@@ -11,7 +11,9 @@ import java.sql.Statement;
 class GUI2  {
     static JFrame jFrame2 = Main.getFrame();
     BDW1 worker = new BDW1();
-
+    static String  firstname ;
+    static String  lastname ;
+    static String  middlename ;
     public GUI2() throws SQLException {
         JPanel jPanel = new JPanel();
         jFrame2.add(jPanel);
@@ -42,9 +44,9 @@ class GUI2  {
         Statement statement = worker.getConnection().createStatement();
         ResultSet resultSet = statement.executeQuery("select firstname, lastname, middlename from users where email = '" + Main.Email+"'");
         resultSet.next();
-        String  firstname = resultSet.getString("firstname");
-        String  lastname = resultSet.getString("lastname");
-        String  middlename = resultSet.getString("middlename");
+         firstname = resultSet.getString("firstname");
+         lastname = resultSet.getString("lastname");
+         middlename = resultSet.getString("middlename");
         JLabel l2 = new JLabel("Вы вошли под именем:");
         l2.setFont( new Font("Verdana", Font.PLAIN, 18));
         l2.setBounds(50, 370, 400, 50);

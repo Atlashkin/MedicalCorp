@@ -17,7 +17,7 @@ class GUI52 {
 
     }
 
-    public static void main(String[] args) throws Exception{
+    public GUI52() throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
         jPanel.setLayout(null);
@@ -66,18 +66,18 @@ class GUI52 {
         jPanel.add(nw1Text);
         jPanel.add(save);
         jPanel.add(no);
-
+        jPanel.revalidate();
         SwingUtilities.invokeLater((new Runnable() {
             public void run() {
                 try {
-                    new GUI5();
+                    new GUI52();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
             }
         }));
 
-        jPanel.revalidate();
+
         jFrame.setVisible(true);
     }
 }

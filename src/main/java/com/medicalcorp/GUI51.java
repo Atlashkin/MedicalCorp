@@ -2,7 +2,8 @@ package com.medicalcorp;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 class GUI51 {
     static JFrame jFrame = getFrame();
@@ -17,7 +18,7 @@ class GUI51 {
 
     }
 
-    public static void main(String[] args) throws Exception{
+    public  GUI51() throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
         jPanel.setLayout(null);
@@ -65,17 +66,37 @@ class GUI51 {
         jPanel.add(save);
         jPanel.add(no);
 
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //какой нибудь запрос sql
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                GUI5.jFrame.show(true);
+                GUI5.jFrame.setVisible(true);
+            }
+        });
+        no.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                GUI5.jFrame.show(true);
+                GUI5.jFrame.setVisible(true);
+            }
+        });
+
         SwingUtilities.invokeLater((new Runnable() {
             public void run() {
                 try {
-                    new GUI5();
+                    new GUI51();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
             }
         }));
         jPanel.revalidate();
-        jFrame.setVisible(true);
+
     }
 
 
