@@ -2,7 +2,6 @@ package com.medicalcorp;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 class GUI51 {
     static JFrame jFrame = getFrame();
@@ -17,7 +16,7 @@ class GUI51 {
 
     }
 
-    public static void main(String[] args) throws Exception{
+    public  GUI51() throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
         jPanel.setLayout(null);
@@ -68,7 +67,7 @@ class GUI51 {
         SwingUtilities.invokeLater((new Runnable() {
             public void run() {
                 try {
-                    new GUI5();
+                    new GUI51();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }

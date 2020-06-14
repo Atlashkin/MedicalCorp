@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c717761-384b-4d4b-a799-d86c43ebbbda" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI51.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI51.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI52.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI52.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI53.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI53.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI7.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI8.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +39,13 @@
         <item name="bd_medicalcorp@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="bd_medicalcorp: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="bd_medicalcorp@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="bd_medicalcorp: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="authorization: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -87,18 +91,6 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="GUI2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI2" />
@@ -113,34 +105,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GUI4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI4" />
-      <module name="ProjectMedicalCorp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.medicalcorp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GUI51" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI51" />
-      <module name="ProjectMedicalCorp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.medicalcorp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GUI52" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI52" />
+      <option name="MAIN_CLASS_NAME" value="GUI52" />
+      <module name="ProjectMedicalCorp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GUI53" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI53" />
+      <module name="ProjectMedicalCorp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GUI8 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI8" />
       <module name="ProjectMedicalCorp" />
       <extension name="coverage">
         <pattern>
@@ -156,7 +136,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.medicalcorp.Main" />
-      <module name="ProjectMedicalCorp" />
+      <module name="MedicalCorp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.medicalcorp.*" />
@@ -170,26 +150,33 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.GUI52" />
-        <item itemvalue="Application.GUI51" />
-        <item itemvalue="Application.GUI4" />
         <item itemvalue="Application.GUI2" />
+        <item itemvalue="Application.GUI8 (1)" />
+        <item itemvalue="Application.GUI53" />
+        <item itemvalue="Application.GUI52" />
       </list>
     </recent_temporary>
   </component>
   <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@c9ad9563" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </treeState>
-      </serviceView>
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:bd_medicalcorp@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:bd_medicalcorp@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@aef1177" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
     </option>
   </component>
   <component name="SvnConfiguration">
@@ -227,7 +214,7 @@
       <workItem from="1591894860785" duration="3883000" />
       <workItem from="1591983265473" duration="13628000" />
       <workItem from="1592050585693" duration="5558000" />
-      <workItem from="1592056818132" duration="6091000" />
+      <workItem from="1592056818132" duration="7625000" />
     </task>
     <task id="LOCAL-00001" summary="upd">
       <created>1592061149856</created>
@@ -236,22 +223,18 @@
       <option name="project" value="LOCAL" />
       <updated>1592061149856</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="upd">
+      <created>1592064421744</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592064421744</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="upd" />
@@ -274,6 +257,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="27" key="#SQL_Dialects/0.0.1366.738@0.0.1366.738" timestamp="1590322880045" />
+    <state x="413" y="123" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1592064761241">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="413" y="123" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1592064761241" />
     <state x="275" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590601805154">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -286,10 +273,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="488" y="52" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1592063492764" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1592061136952">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1592064413455">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1592061136952" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1592064413455" />
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1591995484554">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -302,22 +289,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592051117225" />
-    <state width="1323" height="128" key="GridCell.Tab.0.bottom" timestamp="1592064107286">
+    <state width="1323" height="128" key="GridCell.Tab.0.bottom" timestamp="1592135994218">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1592064107286" />
-    <state width="1323" height="128" key="GridCell.Tab.0.center" timestamp="1592064107286">
+    <state width="1323" height="128" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1592135994218" />
+    <state width="1323" height="128" key="GridCell.Tab.0.center" timestamp="1592135994218">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1592064107286" />
-    <state width="1323" height="128" key="GridCell.Tab.0.left" timestamp="1592064107285">
+    <state width="1323" height="128" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1592135994218" />
+    <state width="1323" height="128" key="GridCell.Tab.0.left" timestamp="1592135994218">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1592064107285" />
-    <state width="1323" height="128" key="GridCell.Tab.0.right" timestamp="1592064107286">
+    <state width="1323" height="128" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1592135994218" />
+    <state width="1323" height="128" key="GridCell.Tab.0.right" timestamp="1592135994218">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1592064107286" />
+    <state width="1323" height="128" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1592135994218" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1591641537336">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -342,10 +329,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1590601356137" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1592061160526">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1592064425893">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1592061160526" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1592064425893" />
     <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1591995456364">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -374,16 +361,5 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1590333173737" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java</url>
-          <line>10</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

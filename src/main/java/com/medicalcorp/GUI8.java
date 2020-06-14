@@ -6,27 +6,12 @@ import java.awt.event.*;
 
 
 class GUI8 {
-    static JFrame jFrame = getFrame();
-    static JFrame getFrame() {
+    static JFrame jFrame8 = Main.getFrame();
 
-
-        JFrame jFrame = new JFrame() {};
-        //jFrame.getContentPane().setLayout(null);
-        jFrame.setSize(800, 500);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setResizable(false);
-        jFrame.setLocationRelativeTo(null);
-
-
-
-
-        return jFrame;
-
-    }
 
     public GUI8() throws Exception{
         JPanel jPanel = new JPanel();
-        jFrame.add(jPanel);
+        jFrame8.add(jPanel);
         jPanel.setLayout(null);
 
         JLabel mc = new JLabel("ПЕРСОНАЛ");
@@ -36,7 +21,15 @@ class GUI8 {
         JButton gm = new JButton("Главное меню");
         gm.setFont( new Font("Verdana", Font.PLAIN, 10));
         gm.setBounds(630, 15, 120, 30);
-
+        gm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jFrame8.dispose();
+                jFrame8.setVisible(false);
+                GUI2.jFrame2.show();
+                GUI2.jFrame2.setVisible(true);
+            }
+        });
 
         Object[] headers = { "№", "ФИО", "Возраст", "Должность"};
         Object[][] data = {{"1", "oo", "pp", "rr"},{"1", "oo", "pp", "rr"},{"1", "oo", "pp", "rr"},{"1", "oo", "pp", "rr"},{"1", "oo", "pp", "rr"},{"1", "oo", "pp", "rr"}};
@@ -80,7 +73,7 @@ class GUI8 {
                 }
             }
         }));
-        jFrame.setVisible(true);
+
 
 
         jPanel.revalidate();
