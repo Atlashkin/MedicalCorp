@@ -17,7 +17,7 @@ class GUI52 {
 
     }
 
-    public static void main(String[] args) throws Exception{
+    public GUI52() throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
         jPanel.setLayout(null);
@@ -67,17 +67,57 @@ class GUI52 {
         jPanel.add(save);
         jPanel.add(no);
 
-        SwingUtilities.invokeLater((new Runnable() {
-            public void run() {
+     //   SwingUtilities.invokeLater((new Runnable() {
+       //     public void run() {
+         //       try {
+           //         new GUI52();
+             //   } catch (Exception e1) {
+               //     e1.printStackTrace();
+                //}
+           // }
+        //}));
+
+        no.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                GUI5.jFrame.show();
+                GUI5.jFrame.setVisible(true);
                 try {
+
                     new GUI5();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
-        }));
+        });
 
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String log = "root";
+                String login = passwText.getText();
+                if (log.equals(login)) {
+                    jFrame.dispose();
+                    jFrame.setVisible(false);
+                    GUI5.jFrame.show();
+                    GUI5.jFrame.setVisible(true);
+                    try {
+
+                        new GUI5();
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+
+            }
+        });
         jPanel.revalidate();
-        jFrame.setVisible(true);
+
     }
 }

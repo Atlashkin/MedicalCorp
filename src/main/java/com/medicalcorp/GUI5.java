@@ -120,9 +120,11 @@ class GUI5 {
                 jFrame.setVisible(false);
                 try {
                     new GUI51();
+
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+                GUI51.jFrame.setVisible(true);
             }
         });
 
@@ -136,21 +138,54 @@ class GUI5 {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+                GUI52.jFrame.setVisible(true);
             }
         });
 
-        pas.addActionListener(new ActionListener() {
+        save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jFrame.dispose();
-                jFrame.setVisible(false);
-                try {
-                    new GUI53();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+                String all = "root";
+                String all1 = aboutText.getText();
+                if (all.equals(all1)) {
+                    jFrame.dispose();
+                    jFrame.setVisible(false);
+                    GUI5.jFrame.show();
+                    GUI5.jFrame.setVisible(true);
+
+                    try {
+
+                        new GUI5();
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 }
+
+
             }
         });
+
+        mail.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                jFrame.dispose();
+                jFrame.setVisible(false);
+
+                try {
+
+                    new GUI53();
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                GUI53.jFrame.setVisible(true);
+            }
+        });
+
+
+
     }
 
 
