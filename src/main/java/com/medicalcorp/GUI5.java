@@ -138,10 +138,11 @@ class GUI5 {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+                GUI52.jFrame.setVisible(true);
             }
         });
 
-        pas.addActionListener(new ActionListener() {
+        mail.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jFrame.dispose();
@@ -151,6 +152,7 @@ class GUI5 {
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
+                GUI53.jFrame.setVisible(true);
             }
         });
     }

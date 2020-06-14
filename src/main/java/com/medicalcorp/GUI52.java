@@ -67,17 +67,55 @@ class GUI52 {
         jPanel.add(save);
         jPanel.add(no);
         jPanel.revalidate();
-        SwingUtilities.invokeLater((new Runnable() {
-            public void run() {
+       // SwingUtilities.invokeLater((new Runnable() {
+       //     public void run() {
+         //       try {
+          //          new GUI52();
+           //     } catch (Exception e1) {
+            //        e1.printStackTrace();
+             //   }
+           // }
+       // }));
+
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String email = "root";
+                String email1 = passwText.getText();
+                if (email.equals(email1)) {
+                    jFrame.dispose();
+                    jFrame.setVisible(false);
+                    GUI5.jFrame.show();
+                    GUI5.jFrame.setVisible(true);
+                    try {
+
+                        new GUI5();
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+
+
+            }
+        });
+
+        no.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                GUI5.jFrame.show();
+                GUI5.jFrame.setVisible(true);
                 try {
-                    new GUI52();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
+
+                    new GUI5();
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
-        }));
-
-
-        jFrame.setVisible(true);
+        });
     }
 }
