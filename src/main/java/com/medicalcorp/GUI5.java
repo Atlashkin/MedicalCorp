@@ -110,6 +110,7 @@ class GUI5 {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+
             }
         });
 
@@ -123,6 +124,7 @@ class GUI5 {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+                GUI51.jFrame.setVisible(true);
             }
         });
 

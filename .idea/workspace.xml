@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1c717761-384b-4d4b-a799-d86c43ebbbda" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI51.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI51.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI8.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI52.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI52.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,9 +104,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GUI52" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI52" />
-      <module name="ProjectMedicalCorp" />
+    <configuration name="GUI4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.medicalcorp.GUI4" />
+      <module name="MedicalCorp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.medicalcorp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -150,10 +155,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GUI4" />
         <item itemvalue="Application.GUI2" />
         <item itemvalue="Application.GUI8 (1)" />
         <item itemvalue="Application.GUI53" />
-        <item itemvalue="Application.GUI52" />
       </list>
     </recent_temporary>
   </component>
@@ -230,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592064421744</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="upd">
+      <created>1592136080921</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1592136080921</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,10 +285,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="488" y="52" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1592063492764" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1592064413455">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1592136072463">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1592064413455" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1592136072463" />
     <state x="92" y="92" width="1182" height="554" key="DiffContextDialog" timestamp="1591995484554">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -289,22 +301,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592051117225" />
-    <state width="1323" height="128" key="GridCell.Tab.0.bottom" timestamp="1592135994218">
+    <state width="1323" height="130" key="GridCell.Tab.0.bottom" timestamp="1592144279972">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1592135994218" />
-    <state width="1323" height="128" key="GridCell.Tab.0.center" timestamp="1592135994218">
+    <state width="1323" height="130" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1592144279972" />
+    <state width="1323" height="130" key="GridCell.Tab.0.center" timestamp="1592144279972">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1592135994218" />
-    <state width="1323" height="128" key="GridCell.Tab.0.left" timestamp="1592135994218">
+    <state width="1323" height="130" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1592144279972" />
+    <state width="1323" height="130" key="GridCell.Tab.0.left" timestamp="1592144279972">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1592135994218" />
-    <state width="1323" height="128" key="GridCell.Tab.0.right" timestamp="1592135994218">
+    <state width="1323" height="130" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1592144279972" />
+    <state width="1323" height="130" key="GridCell.Tab.0.right" timestamp="1592144279972">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="128" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1592135994218" />
+    <state width="1323" height="130" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1592144279972" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1591641537336">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -329,10 +341,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1590601356137" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1592064425893">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1592136095660">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1592064425893" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1592136095660" />
     <state x="92" y="92" width="1182" height="554" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1591995456364">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
