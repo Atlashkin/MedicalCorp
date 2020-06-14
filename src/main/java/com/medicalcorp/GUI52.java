@@ -66,18 +66,12 @@ class GUI52 {
         jPanel.add(nw1Text);
         jPanel.add(save);
         jPanel.add(no);
+
         jPanel.revalidate();
-        SwingUtilities.invokeLater((new Runnable() {
-            public void run() {
-                try {
-                    new GUI52();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }));
-
-
         jFrame.setVisible(true);
+
+
+
+
     }
 }

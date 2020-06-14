@@ -33,7 +33,7 @@ class GUI5 {
         name.setFont( new Font("Verdana", Font.PLAIN, 15));
         name.setBounds(350, 89, 250, 40);
 
-        JTextField nameText = new JTextField(20);
+        JLabel nameText = new JLabel(GUI2.lastname+" "+GUI2.firstname+" "+GUI2.middlename);
         nameText.setFont( new Font("Verdana", Font.PLAIN, 15));
         nameText.setBounds(400, 90, 300, 38);
 
@@ -87,7 +87,7 @@ class GUI5 {
         jPanel.add(mc);
         jPanel.add(name);
         jPanel.add(nameText);
-        jPanel.add(log);
+//        jPanel.add(log);
         jPanel.add(mail);
         jPanel.add(pas);
         jPanel.add(sex);
@@ -114,19 +114,7 @@ class GUI5 {
             }
         });
 
-        log.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jFrame.dispose();
-                jFrame.setVisible(false);
-                try {
-                    new GUI51();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                GUI51.jFrame.setVisible(true);
-            }
-        });
+
 
        pas.addActionListener(new ActionListener() {
             @Override
