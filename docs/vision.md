@@ -16,7 +16,7 @@
 
  ### 2. __Детали проекта__
  2.1 *Экраны* 
- https://github.com/Atlashkin/MedicalCorp/blob/master/interface.html
+ https://github.com/Atlashkin/MedicalCorp/tree/master/docs/ui
  
  2.2 *Интеграция с социальными медиа* 
  Приложение не будет интегрировано с социальными медиа (Facebook, Twitter…).
