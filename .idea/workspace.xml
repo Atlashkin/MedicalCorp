@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd758af1-b951-4ea9-9a13-9e689b69f5dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI91.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI92.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI921.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/93708443-f985-492d-bebf-80dcb71b757a.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/93708443-f985-492d-bebf-80dcb71b757a/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/BDW1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/BDW1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI52.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI52.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI53.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI53.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI8.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI8.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI9.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/GUI9.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/medicalcorp/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/medicalcorp/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +228,7 @@
       <workItem from="1592160987540" duration="2194000" />
       <workItem from="1592311733085" duration="4926000" />
       <workItem from="1592326974476" duration="5182000" />
-      <workItem from="1592334237786" duration="26169000" />
+      <workItem from="1592334237786" duration="26333000" />
     </task>
     <task id="LOCAL-00001" summary="upd">
       <created>1592061149856</created>
@@ -284,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592149587068</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="FINAL!!!">
+      <created>1592362561044</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1592362561108</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +280,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="upd" />
-    <option name="LAST_COMMIT_MESSAGE" value="upd" />
+    <MESSAGE value="FINAL!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="FINAL!!!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="275" y="27" key="#Auto_Import" timestamp="1591987927539">
@@ -331,10 +320,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="413" y="115" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1366.738@0.0.1366.738" timestamp="1592355788692" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1592149582043">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1592362546433">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1592149582043" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1592362546433" />
     <state x="363" y="173" key="DUMP_DIALOG_DIMENSION_KEY" timestamp="1592352719555">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -351,22 +340,22 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592051117225" />
-    <state width="1323" height="130" key="GridCell.Tab.0.bottom" timestamp="1592362354088">
+    <state width="661" height="130" key="GridCell.Tab.0.bottom" timestamp="1592362704834">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="130" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1592362354088" />
-    <state width="1323" height="130" key="GridCell.Tab.0.center" timestamp="1592362354088">
+    <state width="661" height="130" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1592362704834" />
+    <state width="661" height="130" key="GridCell.Tab.0.center" timestamp="1592362704833">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="130" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1592362354088" />
-    <state width="1323" height="130" key="GridCell.Tab.0.left" timestamp="1592362354087">
+    <state width="661" height="130" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1592362704833" />
+    <state width="661" height="130" key="GridCell.Tab.0.left" timestamp="1592362704833">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="130" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1592362354087" />
-    <state width="1323" height="130" key="GridCell.Tab.0.right" timestamp="1592362354088">
+    <state width="661" height="130" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1592362704833" />
+    <state width="661" height="130" key="GridCell.Tab.0.right" timestamp="1592362704833">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="130" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1592362354088" />
+    <state width="661" height="130" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1592362704833" />
     <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1592356401114">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -391,10 +380,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1590601356137" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1592149782804">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1592362571978">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1592149782804" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1592362571978" />
     <state x="499" y="120" key="com.intellij.database.view.ui.DbObjectDialog" timestamp="1592323885139">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
