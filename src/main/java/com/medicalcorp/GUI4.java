@@ -3,12 +3,15 @@ package com.medicalcorp;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 
 class GUI4 {
     static JFrame jFrame = Main.getFrame();
 
-
+    Statement statement = Main.worker.getConnection().createStatement();
     public GUI4() throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
@@ -19,8 +22,11 @@ class GUI4 {
         pat.setBounds(20, 5, 400, 50);
 
         JTextField patText = new JTextField(100);
-        patText.setBounds(90, 15, 250, 30);
+        patText.setBounds(150, 15, 250, 30);
 
+        JTextField patIDText = new JTextField(30);
+        patIDText.setBounds(410, 15, 30, 30);
+        jPanel.add(patIDText);
         JLabel dr = new JLabel("Дата рождения:");
         dr.setFont( new Font("Verdana", Font.PLAIN, 12));
         dr.setBounds(20, 45, 400, 50);
@@ -33,32 +39,31 @@ class GUI4 {
         adr.setBounds(20, 85, 400, 50);
 
         JTextField adrText = new JTextField(100);
-        adrText.setBounds(90, 95, 250, 30);
+        adrText.setBounds(150, 95, 250, 30);
 
-        JLabel plo = new JLabel("Место осмотра:");
-        plo.setFont( new Font("Verdana", Font.PLAIN, 12));
-        plo.setBounds(20, 125, 400, 50);
 
-        JTextField ploText = new JTextField(100);
-        ploText.setBounds(150, 135, 250, 30);
-
-        JLabel datao = new JLabel("Дата осмотра:");
-        datao.setFont( new Font("Verdana", Font.PLAIN, 12));
-        datao.setBounds(20, 165, 400, 50);
-
-        JTextField dataoText = new JTextField(100);
-        dataoText.setBounds(150, 175, 250, 30);
 
         JLabel dia = new JLabel("Диагноз:");
         dia.setFont( new Font("Verdana", Font.PLAIN, 12));
-        dia.setBounds(20, 205, 400, 50);
+        dia.setBounds(20, 325, 400, 50);
 
-        JTextField diaText = new JTextField(100);
-        diaText.setBounds(90, 215, 250, 30);
+        JTextArea diaText = new JTextArea();
+        diaText.setLineWrap(true);
+        diaText.setWrapStyleWord(true);
+        JScrollPane srr = new JScrollPane(diaText);
+        srr.setBounds(150, 320, 400, 60);
 
-        JLabel med = new JLabel("Назначенные лекарства:");
+
+
+
+        JLabel med = new JLabel("Результат осмотра:");
         med.setFont( new Font("Verdana", Font.PLAIN, 12));
-        med.setBounds(20, 245, 400, 50);
+        med.setBounds(20, 225, 400, 50);
+        JTextArea osText = new JTextArea();
+        osText.setLineWrap(true);
+        osText.setWrapStyleWord(true);
+        JScrollPane scrrr = new JScrollPane(osText);
+        scrrr.setBounds(150, 220, 400, 60);
 
 
 
@@ -89,14 +94,13 @@ class GUI4 {
             public void actionPerformed(ActionEvent e) {
                 jFrame.dispose();
                 jFrame.setVisible(false);
-
+                GUI3.jFrame3.show();
+                GUI3.jFrame3.setVisible(true);
 
             }
         });
 
-        JButton away = new JButton("Выписать");
-        away.setFont( new Font("Verdana", Font.PLAIN, 10));
-        away.setBounds(630, 95, 120, 30);
+
 
         JButton save = new JButton("Сохранить");
         save.setFont( new Font("Verdana", Font.PLAIN, 10));
@@ -107,39 +111,40 @@ class GUI4 {
             public void actionPerformed(ActionEvent e) {
                 jFrame.dispose();
                 jFrame.setVisible(false);
+                GUI3.jFrame3.setVisible(true);
 
+                String str1,str2,str3,str4,str5,str6;
+                str1 = patText.getText();
+                str2 = drText.getText();
+                str3 = adrText.getText();
+                str4 = diaText.getText();
+                str5 = osText.getText();
+                str6 = patIDText.getText();
+                try {
+                    statement.executeUpdate("INSERT INTO user ( name, birthdate) VALUES ('"+str1+"','"+str2+"')");
+                    ResultSet resultSet = statement.executeQuery("SELECT id FROM user where name = '"+str1+"'");
+                    resultSet.next();
+                    int in1 = resultSet.getInt("id");
+                    resultSet.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+                try {
+                    statement.executeUpdate("INSERT INTO clinical_record (id, patient, doctor, conclusion) VALUES ('"+str6+"','"+str6+"',2,'"+str5+"')");
+                    statement.executeUpdate("INSERT INTO clinical_record__diagnosis ( clinical_record, diagnosis) VALUES ('"+str6+"','"+str4+"')");
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
 
             }
         });
 
-        Object[] headers = { "№", "Название", "Способ приема", "Описание", "Побочное действие"};
-        Object[][] data = {{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"}};
 
 
-        JTable medicines;
-        medicines = new JTable(data, headers);
-        JScrollPane sr = new JScrollPane(medicines);
 
 
-        medicines.setPreferredScrollableViewportSize(new Dimension(550, 120));
-        sr.setBounds(40, 300, 550, 120);
-        medicines.setBounds(40, 300, 550, 120);
 
-        //patients.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        medicines.getColumnModel().getColumn(0).setMinWidth(10);
-        medicines.getColumnModel().getColumn(0).setMaxWidth(50);
-
-        medicines.getColumnModel().getColumn(1).setMinWidth(50);
-        medicines.getColumnModel().getColumn(1).setMaxWidth(150);
-
-        medicines.getColumnModel().getColumn(2).setMinWidth(50);
-        medicines.getColumnModel().getColumn(2).setMaxWidth(150);
-
-        medicines.getColumnModel().getColumn(3).setMinWidth(50);
-        medicines.getColumnModel().getColumn(3).setMaxWidth(150);
-
-        medicines.getColumnModel().getColumn(4).setMinWidth(50);
-        medicines.getColumnModel().getColumn(4).setMaxWidth(150);
 
 
 
@@ -148,32 +153,20 @@ class GUI4 {
         jPanel.add(pat);
         jPanel.add(patText);
         jPanel.add(back);
-//        jPanel.add(away);
+        jPanel.add(srr);
         jPanel.add(save);
-        jPanel.add(sr);
+        jPanel.add(scrrr);
         jPanel.add(dr);
         jPanel.add(drText);
         jPanel.add(adr);
         jPanel.add(adrText);
-        jPanel.add(plo);
-        jPanel.add(ploText);
-        jPanel.add(datao);
-        jPanel.add(dataoText);
+
         jPanel.add(dia);
-        jPanel.add(diaText);
+//        jPanel.add(diaText);
         jPanel.add(med);
 
 
-//        SwingUtilities.invokeLater((new Runnable() {
-//            public void run() {
-//                try {
-//                    new GUI4();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }));
-//        jFrame.setVisible(true);
+
 
 
         jPanel.revalidate();

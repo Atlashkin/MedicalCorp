@@ -12,6 +12,7 @@ public class Main extends JFrame  {
     String salt = "sol";
     static BDW1 worker = new BDW1();
     static String Email;
+    static String pas1;
     public void GUI1()  {
         JFrame window1 = getFrame();
         JPanel panel1 = new JPanel();
@@ -55,10 +56,10 @@ public class Main extends JFrame  {
                                               Statement statement = worker.getConnection().createStatement();
 
 
-                                              String querry = "select password from users where email = '" + pole1.getText()+"'" ;
+                                              String querry = "select password from user where email = '" + pole1.getText()+"'" ;
                                               ResultSet resultSet = statement.executeQuery(querry);
                                               resultSet.next();
-                                              String pas1 = resultSet.getString("password");
+                                              pas1 = resultSet.getString("password");
                                               String pas13 = pas1+salt;
                                               int pas12 = pas13.hashCode();
                                               String pas2 = pole2.getText();
@@ -113,6 +114,7 @@ public String getEmail() {
 
     public static JFrame getFrame() {
         JFrame window1 = new JFrame();
+        window1.setTitle("MedicalCorp.");
         window1.setVisible(true);
         window1.setDefaultCloseOperation(window1.EXIT_ON_CLOSE);
         window1.setSize(800, 500);

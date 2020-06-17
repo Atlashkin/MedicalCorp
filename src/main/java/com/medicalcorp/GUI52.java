@@ -3,6 +3,9 @@ package com.medicalcorp;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 class GUI52 {
     static JFrame jFrame = getFrame();
@@ -16,7 +19,7 @@ class GUI52 {
         return jFrame;
 
     }
-
+    Statement statement = Main.worker.getConnection().createStatement();
     public GUI52() throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
@@ -67,22 +70,20 @@ class GUI52 {
         jPanel.add(save);
         jPanel.add(no);
         jPanel.revalidate();
-       // SwingUtilities.invokeLater((new Runnable() {
-       //     public void run() {
-         //       try {
-          //          new GUI52();
-           //     } catch (Exception e1) {
-            //        e1.printStackTrace();
-             //   }
-           // }
-       // }));
+
 
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String email = "root";
-                String email1 = passwText.getText();
-                if (email.equals(email1)) {
+                String pass = passwText.getText();
+                if (Main.pas1.equals(pass)) {
+                    if (nwText.getText().equals(nw1Text.getText())) {
+
+                    try {
+                        statement.executeUpdate("UPDATE user SET password = '"+ nwText.getText()+"' WHERE email = '"+Main.Email+"'");
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
                     jFrame.dispose();
                     jFrame.setVisible(false);
                     GUI5.jFrame.show();
@@ -94,7 +95,10 @@ class GUI52 {
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
-                }
+                }else {String messageerror = "Пароли не совпадают";
+                        JOptionPane.showMessageDialog(null,messageerror,"Ошибка",JOptionPane.PLAIN_MESSAGE);}
+                }else {String messageerror = "Неверный пароль";
+                    JOptionPane.showMessageDialog(null,messageerror,"Ошибка",JOptionPane.PLAIN_MESSAGE);}
 
 
             }

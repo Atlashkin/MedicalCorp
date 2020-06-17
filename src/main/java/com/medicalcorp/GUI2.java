@@ -10,9 +10,8 @@ import java.sql.Statement;
 
 class GUI2  {
     static JFrame jFrame2 = Main.getFrame();
-    static String  firstname ;
-    static String  lastname ;
-    static String  middlename ;
+    static String  name ;
+
     public GUI2() throws SQLException {
         JPanel jPanel = new JPanel();
         jFrame2.add(jPanel);
@@ -41,15 +40,14 @@ class GUI2  {
         b5.setBounds(200, 295, 350, 50);
 
         Statement statement = Main.worker.getConnection().createStatement();
-        ResultSet resultSet = statement.executeQuery("select firstname, lastname, middlename from users where email = '" + Main.Email+"'");
+        ResultSet resultSet = statement.executeQuery("select name from user where email = '" + Main.Email+"'");
         resultSet.next();
-         firstname = resultSet.getString("firstname");
-         lastname = resultSet.getString("lastname");
-         middlename = resultSet.getString("middlename");
+         name = resultSet.getString("name");
+        resultSet.close();
         JLabel l2 = new JLabel("Вы вошли под именем:");
         l2.setFont( new Font("Verdana", Font.PLAIN, 18));
         l2.setBounds(50, 370, 400, 50);
-        JLabel l3 = new JLabel(lastname+" "+firstname+" "+middlename);
+        JLabel l3 = new JLabel(name);
         l3.setFont( new Font("Verdana", Font.PLAIN, 18));
         l3.setBounds(300, 370, 400, 50);
 
@@ -109,6 +107,12 @@ class GUI2  {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
+                try {
+                    new GUI9();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         b5.addActionListener(new ActionListener() {

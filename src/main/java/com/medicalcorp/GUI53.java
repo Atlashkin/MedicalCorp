@@ -3,6 +3,8 @@ package com.medicalcorp;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 class GUI53 {
     static JFrame jFrame = getFrame();
@@ -16,7 +18,7 @@ class GUI53 {
         return jFrame;
 
     }
-
+    Statement statement = Main.worker.getConnection().createStatement();
     public GUI53() throws Exception{
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
@@ -65,15 +67,7 @@ class GUI53 {
         jPanel.add(save);
         jPanel.add(no);
 
-//        SwingUtilities.invokeLater((new Runnable() {
-  //          public void run() {
-    //            try {
-      //              new GUI53();
-        //        } catch (Exception e1) {
-          //          e1.printStackTrace();
-            //    }
-            //}
-        //}));
+
 
         no.addActionListener(new ActionListener() {
             @Override
@@ -96,21 +90,30 @@ class GUI53 {
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String email = "root";
-                String email1 = passwText.getText();
-                if (email.equals(email1)) {
-                    jFrame.dispose();
-                    jFrame.setVisible(false);
-                    GUI5.jFrame.show();
-                    GUI5.jFrame.setVisible(true);
-                    try {
+                String pass = passwText.getText();
+                if (Main.pas1.equals(pass)) {
 
-                        new GUI5();
 
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
+                        try {
+                            statement.executeUpdate("UPDATE user SET email = '"+ nwText.getText()+"' WHERE email = '"+Main.Email+"'");
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        jFrame.dispose();
+                        jFrame.setVisible(false);
+                        GUI5.jFrame.show();
+                        GUI5.jFrame.setVisible(true);
+                        try {
+
+                            new GUI5();
+
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
+
+                }else {String messageerror = "Неверный пароль";
+                    JOptionPane.showMessageDialog(null,messageerror,"Ошибка",JOptionPane.PLAIN_MESSAGE);}
+
 
 
             }

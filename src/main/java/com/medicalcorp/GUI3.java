@@ -3,6 +3,9 @@ package com.medicalcorp;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Vector;
 
 
 class GUI3  {
@@ -39,8 +42,8 @@ class GUI3  {
         ad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                jFrame3.dispose();
-//                jFrame3.setVisible(false);
+                jFrame3.dispose();
+                jFrame3.setVisible(false);
                 try {
                     new GUI4();
                 } catch (Exception ex) {
@@ -50,8 +53,13 @@ class GUI3  {
             }
         });
 
-        Object[] headers = { "№", "ФИО", "Лечащий врач", "Дата посещения", "Дата выписки", "Диагноз"};
-        Object[][] data = {{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "o000000000000000000000o", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"},{"1", "oo", "pp", "rr", "gh", "fh"}};
+        Vector data = getDatafromDB();
+        Vector headers = new Vector();
+        headers.add("ФИО");
+        headers.add("Лечащий врач");
+        headers.add("Дата посещения");
+        headers.add("Адрес");
+        headers.add("Диагноз");
 
 
         JTable patients;
@@ -63,24 +71,7 @@ class GUI3  {
         sr.setBounds(70, 70, 650, 350);
         patients.setBounds(70, 70, 650, 350);
 
-        //patients.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        patients.getColumnModel().getColumn(0).setMinWidth(10);
-        patients.getColumnModel().getColumn(0).setMaxWidth(50);
 
-        patients.getColumnModel().getColumn(1).setMinWidth(50);
-        patients.getColumnModel().getColumn(1).setMaxWidth(150);
-
-        patients.getColumnModel().getColumn(2).setMinWidth(50);
-        patients.getColumnModel().getColumn(2).setMaxWidth(150);
-
-        patients.getColumnModel().getColumn(3).setMinWidth(50);
-        patients.getColumnModel().getColumn(3).setMaxWidth(150);
-
-        patients.getColumnModel().getColumn(4).setMinWidth(50);
-        patients.getColumnModel().getColumn(4).setMaxWidth(150);
-
-        patients.getColumnModel().getColumn(5).setMinWidth(50);
-        patients.getColumnModel().getColumn(5).setMaxWidth(150);
 
 
 
@@ -89,19 +80,52 @@ class GUI3  {
         jPanel.add(ad);
         jPanel.add(sr);
 
-//        SwingUtilities.invokeLater((new Runnable() {
-//            public void run() {
-//                try {
-//                    new GUI3();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }));
-//        jFrame3.setVisible(true);
+
 
 
         jPanel.revalidate();
+    }
+
+ 
+
+    public Vector getDatafromDB() throws Exception{
+        Vector result = new Vector();
+        Statement statement = Main.worker.getConnection().createStatement();
+
+        String query = "select * from clinical_record\n" +
+                "INNER JOIN user on clinical_record.patient = user.id \n" +
+                "INNER JOIN location on clinical_record.location = location.id\n" +
+                "INNER JOIN clinical_record__diagnosis on clinical_record.id = clinical_record__diagnosis.clinical_record";
+        ResultSet resultSet = statement.executeQuery(query);
+
+//        String query1 = "select name from user where id ='"+ resultSet.getString("doctor") +"' and password is null";
+//        ResultSet resultSet1 = statement.executeQuery(query1);
+        String p1,p2,p3,p4,p5;
+        while(resultSet.next())
+        {
+
+
+            Vector element = new Vector();
+
+            // Первой колонкой у нас объявлен P_1
+            p1 = resultSet.getString("name");
+            p2 = GUI2.name;
+            p3 = resultSet.getString("created");
+            p4 = resultSet.getString("city")+" "+resultSet.getString("street")+" "+resultSet.getString("address");
+            p5 = resultSet.getString("diagnosis");
+
+
+            // Добавляем по порядку
+            element.add(p1);
+            element.add(p2);
+            element.add(p3);
+            element.add(p4);
+            element.add(p5);
+            // Присоединяем список к результату
+            result.add(element);
+        }
+
+        return result;
     }
 
 }

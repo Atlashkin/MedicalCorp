@@ -3,7 +3,7 @@ package com.medicalcorp;
 import java.sql.*;
 
 public class BDW1 {
-    private static final String URL ="jdbc:mysql://localhost:3306/bd_medicalcorp";
+    private static final String URL ="jdbc:mysql://localhost:3306/medcorp";
     private static final String USER = "root";
     private static final String PASS  ="root";
 

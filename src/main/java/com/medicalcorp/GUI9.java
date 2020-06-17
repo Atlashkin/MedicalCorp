@@ -1,27 +1,30 @@
+package com.medicalcorp;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 class GUI9 {
+    public static String date;
+    public static String fio;
     static JFrame jFrame = getFrame();
-    static JFrame getFrame() {
-        JFrame jFrame = new JFrame() {};
-
-        jFrame.setSize(800, 500);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setResizable(false);
-        jFrame.setLocationRelativeTo(null);
-        return jFrame;
-
+    public static JFrame getFrame() {
+        JFrame window1 = new JFrame();
+        window1.setTitle("MedicalCorp.");
+//        window1.setDefaultCloseOperation(window1.EXIT_ON_CLOSE);
+        window1.setSize(500, 300);
+        window1.setResizable(false);
+        window1.setLocationRelativeTo(null);
+        return window1 ;
     }
 
-    public static void main(String[] args) throws Exception{
+    public GUI9() {
         JPanel jPanel = new JPanel();
         jFrame.add(jPanel);
         jPanel.setLayout(null);
         JLabel mc = new JLabel("ПОИСК ПАЦИЕНТОВ");
         mc.setFont( new Font("Verdana", Font.PLAIN, 25));
-        mc.setBounds(20, 5, 400, 50);
+        mc.setBounds(100, 5, 400, 50);
 
         JButton gm = new JButton("Главное меню");
         gm.setFont( new Font("Verdana", Font.PLAIN, 10));
@@ -29,38 +32,62 @@ class GUI9 {
 
 
 
-        JLabel data = new JLabel("Введите дату:");
-        data.setBounds(220, 115, 200, 40);
+        JLabel data = new JLabel("По дате:");
+        data.setBounds(100, 70, 200, 40);
 
         JTextField dataText = new JTextField(20);
-        dataText.setBounds(340, 120, 150, 30);
+        dataText.setBounds(160, 75, 150, 30);
 
         JButton ok1 = new JButton("ОК");
         ok1.setFont( new Font("Verdana", Font.PLAIN, 10));
-        ok1.setBounds(500, 117, 50, 36);
-
-        JLabel num1 = new JLabel("Количество вызовов:");
-        num1.setBounds(220, 165, 200, 30);
-
-        JTextField num1Text = new JTextField(20);
-        num1Text.setBounds(360, 168, 70, 30);
+        ok1.setBounds(310, 75, 50, 29);
 
 
-        JLabel call = new JLabel("Введите диагноз:");
-        call.setBounds(220, 235, 200, 40);
+
+
+        JLabel call = new JLabel("По ФИО:");
+        call.setBounds(100, 145, 200, 40);
 
         JTextField callText = new JTextField(20);
-        callText.setBounds(340, 240, 150, 30);
+        callText.setBounds(160, 150, 150, 30);
 
         JButton ok2 = new JButton("ОК");
         ok2.setFont( new Font("Verdana", Font.PLAIN, 10));
-        ok2.setBounds(500, 237, 50, 36);
+        ok2.setBounds(310, 150, 50, 29);
 
-        JLabel num2 = new JLabel("Количество вызовов:");
-        num2.setBounds(220, 285, 200, 40);
+        ok1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               date = dataText.getText();
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                GUI2.jFrame2.dispose();
+                try {
+                    new GUI91();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                GUI91.jFrame3.setVisible(true);
+            }
+        });
+        ok2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                fio = callText.getText();
+                jFrame.dispose();
+                jFrame.setVisible(false);
+                GUI2.jFrame2.dispose();
+                try {
+                    new GUI92();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                GUI92.jFrame.setVisible(true);
+            }
+        });
 
-        JTextField num2Text = new JTextField(20);
-        num2Text.setBounds(360, 288, 70, 30);
+
+
 
 
         jPanel.add(gm);
@@ -68,13 +95,11 @@ class GUI9 {
         jPanel.add(data);
         jPanel.add(dataText);
         jPanel.add(ok1);
-        jPanel.add(num1);
-        jPanel.add(num1Text);
+
         jPanel.add(call);
         jPanel.add(callText);
         jPanel.add(ok2);
-        jPanel.add(num2);
-        jPanel.add(num2Text);
+
 
         jPanel.revalidate();
         jFrame.setVisible(true);

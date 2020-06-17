@@ -3,26 +3,14 @@ package com.medicalcorp;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.Vector;
 
 
 class GUI7 {
-    static JFrame jFrame = getFrame();
-    static JFrame getFrame() {
+    static JFrame jFrame = Main.getFrame();
 
-
-        JFrame jFrame = new JFrame() {};
-        //jFrame.getContentPane().setLayout(null);
-        jFrame.setSize(800, 500);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setResizable(false);
-        jFrame.setLocationRelativeTo(null);
-
-
-
-
-        return jFrame;
-
-    }
 
     public GUI7() throws Exception{
         JPanel jPanel = new JPanel();
@@ -37,9 +25,12 @@ class GUI7 {
         gm.setFont( new Font("Verdana", Font.PLAIN, 10));
         gm.setBounds(630, 15, 120, 30);
 
-
-        Object[] headers = { "№", "Название", "Способ приема", "Описание", "Побочное действие"};
-        Object[][] data = {{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"},{"1", "oo", "pp", "rr", "gh"}};
+        Vector data = getDatafromDB();
+        Vector headers = new Vector();
+        headers.add("Название");
+        headers.add("Способ приёма");
+        headers.add("Описание");
+        headers.add("Побочные действия");
 
 
         JTable medicines;
@@ -51,21 +42,6 @@ class GUI7 {
         sr.setBounds(70, 70, 650, 350);
         medicines.setBounds(70, 70, 650, 350);
 
-        //patients.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        medicines.getColumnModel().getColumn(0).setMinWidth(10);
-        medicines.getColumnModel().getColumn(0).setMaxWidth(50);
-
-        medicines.getColumnModel().getColumn(1).setMinWidth(50);
-        medicines.getColumnModel().getColumn(1).setMaxWidth(150);
-
-        medicines.getColumnModel().getColumn(2).setMinWidth(50);
-        medicines.getColumnModel().getColumn(2).setMaxWidth(150);
-
-        medicines.getColumnModel().getColumn(3).setMinWidth(50);
-        medicines.getColumnModel().getColumn(3).setMaxWidth(150);
-
-        medicines.getColumnModel().getColumn(4).setMinWidth(50);
-        medicines.getColumnModel().getColumn(4).setMaxWidth(150);
 
 
 
@@ -96,6 +72,40 @@ class GUI7 {
 
             }
         });
+    }
+    public Vector getDatafromDB() throws Exception{
+        Vector result = new Vector();
+        Statement statement = Main.worker.getConnection().createStatement();
+
+        String query = "select name, method, description, side_efects from medicine" ;
+        ResultSet resultSet = statement.executeQuery(query);
+
+
+        String p1,p2,p3,p4;
+        while(resultSet.next())
+        {
+
+
+            Vector element = new Vector();
+
+            // Первой колонкой у нас объявлен P_1
+            p1 = resultSet.getString("name");
+            p2 = resultSet.getString("method");
+            p3 = resultSet.getString("description");
+            p4 = resultSet.getString("side_efects");
+
+
+            // Добавляем по порядку
+            element.add(p1);
+            element.add(p2);
+            element.add(p3);
+            element.add(p4);
+
+            // Присоединяем список к результату
+            result.add(element);
+        }
+
+        return result;
     }
 
 }
